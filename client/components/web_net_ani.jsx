@@ -191,9 +191,10 @@ class CanvasComponent extends React.Component {
   //////////////////////////////////
     }
    
-    render() {
+    render() {      
+
         return (
-            <canvas/>
+            <canvas className="web-matrix"/>
         );
     }
 }

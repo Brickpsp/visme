@@ -14,18 +14,18 @@
 
 .web-matrix{
   position: absolute;
-  width: 320px;
+ 
 }
 
 .site-sidenav-collapse {  
   position: none;  
  opacity: 1;
-   width:80px;
+   width:320px;
    background: #333333;  
    overflow: hidden ;
   min-width: 15px;
  transition: .4s cubic-bezier(0.4, 0, 0.2, 1) width, .4s cubic-bezier(0.4, 0, 0.2, 1) opacity; 
-
+color: white;
  display: flex;
   flex-flow: column;
  
@@ -283,6 +283,7 @@ code:not(.highlight) {
    -webkit-transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all; 
     transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all; 
    overflow: hidden;
+   color: white ;
 }
 .docs-menu.ng-hide-add, .docs-menu.ng-hide-remove {
    -webkit-transform: translate3d(0, 0, 0);
@@ -314,7 +315,7 @@ code:not(.highlight) {
  
 }
 
-.docs-menu .md-button {
+.docs-menu .button {
   border-radius: 0;
   color: white;
   cursor: pointer;
@@ -329,11 +330,11 @@ code:not(.highlight) {
   white-space: normal;
   width: 100%;
 }
-.docs-menu .md-button:hover,
-.docs-menu .md-button:focus {
+.docs-menu .button:hover,
+.docs-menu .button:focus {
   background: #000000 !important;
 }
-.docs-menu .md-button md-icon {
+.docs-menu .button md-icon {
   color: white;
 }
 
@@ -363,7 +364,7 @@ code:not(.highlight) {
 .docs-menu button.md-button::-moz-focus-inner {
   padding: 0;
 }
-.docs-menu .md-button.active {
+.docs-menu .button.active {
   background: #333333;
 }
 .menu-heading {
@@ -459,7 +460,7 @@ ul#docs-menu-Directives {
 }
 .nav-header {
   background-color: transparent;
-  flex-shrink: 0;   
+  height:80px;  
   z-index: 2;
 }
 a.docs-logo {
