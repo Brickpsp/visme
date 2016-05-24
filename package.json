@@ -5,15 +5,13 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "grommet": "^0.6.6",
     "material-ui": "^0.15.0",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
+    "react-grid-layout": "^0.12.4",
     "react-layout-pane": "^0.1.16",
-    "react-mounter": "^1.2.0",
-    "react-split-pane": "^0.1.42",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-mounter": "^1.2.0"
   },
   "version": "1.0.0",
   "main": "index.js",

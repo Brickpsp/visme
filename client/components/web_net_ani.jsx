@@ -9,7 +9,7 @@ class CanvasComponent extends React.Component {
     var canvas = document.querySelector("canvas");
     canvas.height = window.outerHeight;
     var ctx = canvas.getContext("2d");
-    var TAU = 1 * Math.PI;
+    var TAU = 2 * Math.PI;
     var strict = false;
     var freemode = true;
     var limit_line = 5;
@@ -79,11 +79,11 @@ class CanvasComponent extends React.Component {
         ctx.fill();
       }
 
-      this.draw2 = function (ctx, can) {
+      this.draw2 = function (ctx, can, speed) {
         ctx.beginPath();
         ctx.fillStyle = '#FFFFFF';
         ctx.globalAlpha = .6;
-        ctx.arc((0.5 + this.x) | 0, (0.5 + this.y) | 0, 2.8, 0, TAU, false);
+        ctx.arc((0.5 + this.x) | 0, (0.5 + this.y) | 0, 2 + (speed/speed_line)*2, 0, TAU, false);
         ctx.fill();
       }
     }
@@ -160,6 +160,7 @@ class CanvasComponent extends React.Component {
                       var dy = ball2.y - ball.y;
                       ctx.lineTo((0.5 + ball.x) + dx * fralin[index + "-" + index2] / speed_line | 0, (0.5 + ball.y) + dy * fralin[index + "-" + index2] / speed_line | 0);
                       ctx.stroke();
+                      // ball2.draw2(ctx, canvas,fralin[index + "-" + index2]);
                       //if (fralin[index + "-" + index2] == speed_line) ball2.draw2(ctx, canvas);
                     }
                   } else {
@@ -173,6 +174,7 @@ class CanvasComponent extends React.Component {
                       var dy = ball.y - ball2.y;
                       ctx.lineTo((0.5 + ball2.x) + dx * fralin[index + "-" + index2] / speed_line | 0, (0.5 + ball2.y) + dy * fralin[index + "-" + index2] / speed_line | 0);
                       ctx.stroke();
+                       //ball2.draw2(ctx, canvas,fralin[index + "-" + index2]);
                       //if (fralin[index + "-" + index2] == speed_line) ball2.draw2(ctx, canvas);                 
                     }
                   }

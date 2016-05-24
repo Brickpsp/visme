@@ -1,26 +1,28 @@
-.text_transparency{
-   transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all;
+.menu_text{
+   
 }
 
-.text_transparency.ng-hide-add, .text_transparency.ng-hide-remove {
+.text_transparency-enter, .text_transparency-enter-active {
   opacity: 1; 
+  transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all;
   
 }
 
-.text_transparency.ng-hide {  	
+.text_transparency-leave, .text_transparency-leave-active {  	
  opacity: 0;
  margin-left: 100px;
+ transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all;
 }
 
 .web-matrix{
-  position: absolute;
  
+ width: 320px;
 }
 
 .site-sidenav-collapse {  
   position: none;  
  opacity: 1;
-   width:320px;
+   width:80px;
    background: #333333;  
    overflow: hidden ;
   min-width: 15px;
@@ -285,13 +287,13 @@ code:not(.highlight) {
    overflow: hidden;
    color: white ;
 }
-.docs-menu.ng-hide-add, .docs-menu.ng-hide-remove {
+.docs-menu.hide-add, .docs-menu.hide-remove {
    -webkit-transform: translate3d(0, 0, 0);
      transform: translate3d(0, 0, 0);
     opacity: 1;
 }
 
-.docs-menu.ng-hide {    	
+.docs-menu.hide {    	
  -webkit-transform:translate3d(-50%, 0, 0);
      transform: translate3d(-50%, 0, 0);
      opacity: 0;
@@ -383,12 +385,12 @@ code:not(.highlight) {
     
 }
 
-.menu-toggle-list.ng-hide-add, .menu-toggle-list.ng-hide-remove {
+.menu-toggle-list.hide-add, .menu-toggle-list.hide-remove {
  margin-left: 0;
  max-height: 100vh;
 }
 
-.menu-toggle-list.ng-hide {	
+.menu-toggle-list.hide {	
    max-height: 0;
    opacity: 0;
 	overflow: hidden;
@@ -838,11 +840,11 @@ md-icon.block {
     
 }
           
-.footer_hide.ng-hide-add, .footer_hide.ng-hide-remove {
+.footer_hide.hide-add, .footer_hide.hide-remove {
    margin-bottom: 0;
 }
 
-.footer_hide.ng-hide {  	
+.footer_hide.hide {  	
    margin-bottom: -100px;
 }                
 

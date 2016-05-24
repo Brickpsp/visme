@@ -17,4 +17,3 @@ export const MainLayout = ({sidenav, content}) => (
 
   </div>
 );
- // {footer}
