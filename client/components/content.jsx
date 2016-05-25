@@ -1,67 +1,35 @@
 import React from 'react';
+import TrackerReact from 'meteor/ultimatejs:tracker-react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import TextField from 'material-ui/TextField';
-import {Tabs, Tab} from 'material-ui/Tabs';
-var ResponsiveReactGridLayout = require('react-grid-layout').Responsive;
-var ReactGridLayout = require('react-grid-layout');
-test = new Mongo.Collection('test');
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-};
+import Paper from 'material-ui/Paper';
+import {Responsive, WidthProvider} from 'react-grid-layout';
+const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
-export default class Content extends React.Component {
-     
-    adddata(event){
-        event.preventDefault();
-        console.log(this);
-        var text = this.refs.testdata.input.value.trim();
-        test.insert({
-          test : text,
-          complete : false,
-          CreateAT : new Date()  
-        });
-       this.refs.testdata.input.value = "";
-    }
-    
-    render(){
-          var layout = [
-      {i: 'a', x: 0, y: 0, w: 1, h: 2, static: true},
-      {i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4},
-      {i: 'c', x: 4, y: 0, w: 1, h: 2}
-    ];
-        
+import Testmg from '/client/views/testmongo.jsx';
+
+
+
+export default class Content extends TrackerReact(React.Component) {
+ 
+
+    render() {
+       
+
         return (
               <MuiThemeProvider muiTheme={getMuiTheme() }>
-       
-    <Tab label="Item One" >
-            <div>
-            
-                <h2 style={styles.headline}>Tab One</h2>
-                <form onSubmit={this.adddata.bind(this)}>
-                   
-                     <TextField
-      hintText="Hint Text"
-      ref="testdata"
-      floatingLabelText="Floating Label Text"
-    /><br />
-                </form>
-            </div>
-            
-             <ReactGridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1200}>
-        <div key={'a'}>a</div>
-        <div key={'b'}>b</div>
-        <div key={'c'}>c</div>
-      </ReactGridLayout>
-            </Tab>
-           
-            </MuiThemeProvider>
+           <ResponsiveReactGridLayout 
+      breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
+      cols={{lg: 12, md: 10, sm: 6, xs: 4, xxs: 2}}>
+                <Paper key="a" zDepth={1}  _grid={{ x: 0, y: 0, w: 10, h: 5}}>
+                      <Testmg />          
+                </Paper>
+                 <Paper  key="c" _grid={{x: 11, y: 0, w: 2, h: 2}}>
+                
+                 </Paper>
+             </ResponsiveReactGridLayout>
+              </MuiThemeProvider>
         );
     }
 }

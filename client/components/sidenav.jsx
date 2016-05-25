@@ -22,23 +22,22 @@ export default class sidenav extends React.Component {
   // className += " button"
   render() {
     var open_drawer = {};
-    handleToggle = () => 
-    {
+    handleToggle = () => {
       this.setState({ open: !this.state.open });
-      if(!this.state.open)
-      {
-       this.setState({open_drawer : 
-      {
-        width:'320px',
+      if (!this.state.open) {
+        this.setState({
+          open_drawer:
+          {
+            width: '320px',
+          }
+        });
+
       }
-       });
-      
-      }
-      else this.setState({open_drawer : {} });
+      else this.setState({ open_drawer: {} });
     }
     var nav_icon = this.state.open ? "open" : "";
-  
-   
+
+
     return (
 
       <MuiThemeProvider muiTheme={darkMuiTheme}>
@@ -61,24 +60,31 @@ export default class sidenav extends React.Component {
                 <Flex>
                 </Flex>
                 <Fixed>
-                <ReactCSSTransitionGroup transitionName="text_transparency">
-                {
-                  
-		         this.state.open ? 
-           <div className="menu_text" > Menu </div>
-            : 
-            null
-           
-        
-        }
+                  <ReactCSSTransitionGroup transitionName="text_transparency">
+                    {
+                      this.state.open ?
+                        <div className="menu_text" > Menu </div>
+                        :
+                        null
+                    }
                   </ReactCSSTransitionGroup>
                 </Fixed>
               </Layout>
             </Fixed>
             <Flex className="content">
               <ul className="docs-menu">
-                <MenuItem >Menu Item</MenuItem>
-                <MenuItem >Menu Item 2</MenuItem>
+                {
+                  this.state.open ?
+                    <MenuItem >Menu Item</MenuItem>
+                    :
+                    null
+                }
+                {
+                  this.state.open ?
+                    <MenuItem >Menu Item 2</MenuItem>
+                    :
+                    null
+                }
               </ul>
             </Flex>
             <Fixed>
