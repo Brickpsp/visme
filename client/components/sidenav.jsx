@@ -2,7 +2,6 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-transition-group';
 import MenuItem from 'material-ui/MenuItem';
 import CanvasComponent from './web_net_ani';
-import footer from '/client/components/footer.jsx';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';

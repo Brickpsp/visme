@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidenav from '/client/components/sidenav.jsx';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
 
 export const MainLayout = ({sidenav, content}) => (
@@ -6,7 +7,7 @@ export const MainLayout = ({sidenav, content}) => (
 
     <Layout type="row">
       <Fixed>
-        <div>{sidenav}</div>
+        <Sidenav/>
       </Fixed>
       <Flex>
         <div>{content}</div>
