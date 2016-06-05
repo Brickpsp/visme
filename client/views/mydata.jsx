@@ -1,21 +1,21 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import GridCnt from '/client/components/grid_content.jsx'
+
+
+import GridCnt from '/client/components/grid_content.jsx';
+
 test = new Mongo.Collection('test');
 
-export default class Mydata extends TrackerReact(React.Component) {
+export default class Mydata extends React.Component {
     constructor() {
-        super();
+        super();        
         this.state = {
-            subcription: {
+            subscription: {
                 test: Meteor.subscribe("userData")
             }
         }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount() {       
         this.state.subscription.test.stop();
     }
 
@@ -24,9 +24,14 @@ export default class Mydata extends TrackerReact(React.Component) {
        
 
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme() }>
+           
+           
+                        
+      
                 <GridCnt/>
-            </MuiThemeProvider>
+                
+            
+           
         );
     }
 }

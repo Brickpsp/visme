@@ -21,6 +21,7 @@ export default class Grid_content extends React.Component {
                 <ResponsiveReactGridLayout
                     breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                     cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}  
+                     measureBeforeMount={true}
                             onDrag={ this._preventTextSelect }
         onResize={ this._preventTextSelect }
         onResizeStop={ this._preventTextSelect }                                                                           
@@ -31,7 +32,7 @@ export default class Grid_content extends React.Component {
                     <Paper  key="b" _grid={{i:"b", x: 11, y: 0, w: 2, h: 2 }} style={{overflow: 'auto'}}>
                         <Testmg />
                     </Paper>
-                     <Paper  key="c" _grid={{i:"v", x: 0, y: 4, w: 3, h: 2 }} style={{overflow: 'auto'}}>
+                     <Paper  key="c" _grid={{i:"c", x: 0, y: 4, w: 3, h: 2 }} style={{overflow: 'auto'}}>
                         <AccountsUIWrapper />
                     </Paper>
                 </ResponsiveReactGridLayout>

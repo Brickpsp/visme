@@ -1,17 +1,25 @@
 .menu_text{
-   
+       padding-right: 20px;
+        padding-top: 10px;
 }
 
-.text_transparency-enter, .text_transparency-enter-active {
-  opacity: 1; 
+.text_transparency-enter{
+  opacity: 0; 
   transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all;
-  
 }
 
-.text_transparency-leave, .text_transparency-leave-active {  	
- opacity: 0;
+.text_transparency-enter.text_transparency-enter-active {
+  opacity: 1;     
+}
+
+.text_transparency-leave{
+   opacity: 1;
  margin-left: 100px;
  transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all;
+}
+
+.text_transparency-leave.text_transparency-leave-active {  	
+opacity: 0; 
 }
 
 .web-matrix{
@@ -287,13 +295,20 @@ code:not(.highlight) {
    overflow: hidden;
    color: white ;
 }
-.docs-menu.hide-add, .docs-menu.hide-remove {
+.docs-menu-enter{
+  -webkit-transform:translate3d(-50%, 0, 0);
+     transform: translate3d(-50%, 0, 0);
+    opacity: 0;
+}
+
+.docs-menu-enter-active{
    -webkit-transform: translate3d(0, 0, 0);
      transform: translate3d(0, 0, 0);
     opacity: 1;
 }
 
-.docs-menu.hide {    	
+
+.docs-menu-leave {    	
  -webkit-transform:translate3d(-50%, 0, 0);
      transform: translate3d(-50%, 0, 0);
      opacity: 0;
@@ -810,16 +825,18 @@ md-icon.block {
 .sidenav-footer
 {
   position: absolute;
-  height: 120px;
+ height: 120px;
   bottom: 0;
   width: 100%;
   text-align: center;
-  font-size: 1.1rem !important;  
+  font-size: 1.2rem !important;  
 } 
 
 .social-icon
 {
- 
+ left: auto !important;
+  right: auto !important;
+  
   padding-left: 25px;
 }
 
@@ -830,23 +847,25 @@ md-icon.block {
   width:30px;
 }
   
-.footer_hide
-{
-   transition: margin .5s ease 0s;
-   position: absolute;
-   
-    bottom: 0;
-    width: 100%;
-    
-}
+
           
-.footer_hide.hide-add, .footer_hide.hide-remove {
+.footer_hide-enter{  
+   transition: margin .2s linear;       
+    margin-bottom: -100px;
+}
+
+.footer_hide-enter-active {
    margin-bottom: 0;
 }
 
-.footer_hide.hide {  	
+.footer_hide-leave {  
+  margin-bottom: 0;	 
+  transition: margin .5s linear;   
+}    
+
+.footer_hide-leave-active {  	
    margin-bottom: -100px;
-}                
+}              
 
 /* Menu "Hamburger" Icon Animations
  http://codepen.io/designcouch/pen/Atyop

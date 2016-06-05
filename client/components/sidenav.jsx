@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-transition-group';
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 import MenuItem from 'material-ui/MenuItem';
 import CanvasComponent from './web_net_ani';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import './main.css';
+import '/public/css/sidenav.css';
 
 const darkMuiTheme = getMuiTheme(darkBaseTheme);
 
@@ -59,10 +59,10 @@ export default class sidenav extends React.Component {
                 <Flex>
                 </Flex>
                 <Fixed>
-                  <ReactCSSTransitionGroup transitionName="text_transparency">
+                  <ReactCSSTransitionGroup  transitionName="text_transparency" transitionEnterTimeout={200} transitionLeaveTimeout={200}>
                     {
                       this.state.open ?
-                        <div className="menu_text" > Menu </div>
+                        <div className="menu-heading" > Menu </div>
                         :
                         null
                     }
@@ -71,41 +71,48 @@ export default class sidenav extends React.Component {
               </Layout>
             </Fixed>
             <Flex className="content">
-              <ul className="docs-menu">
+              <ReactCSSTransitionGroup  transitionName="docs-menu" transitionEnterTimeout={200} transitionLeaveTimeout={200}>
+                  
                 {
                   this.state.open ?
-                    <MenuItem >Menu Item</MenuItem>
+                  <ul className="docs-menu">
+                    <MenuItem className="button" href="/">Menu Item</MenuItem>                
+                    <MenuItem className="button" href="/a">Menu Item 2</MenuItem>
+                     <MenuItem className="button" href="/b">Menu Item 3</MenuItem>
+                      </ul>
                     :
                     null
                 }
-                {
-                  this.state.open ?
-                    <MenuItem >Menu Item 2</MenuItem>
-                    :
-                    null
-                }
-              </ul>
+             </ReactCSSTransitionGroup>
             </Flex>
             <Fixed>
               <footer className="sidenav-footer">
                 <Layout type="column">
                   <Flex>
-                    <div className="social-icon" >
-                      <Layout type="column">
-                        <Fixed>
+                   
+                      <Layout type="column" className="social-icon">
+                        <Fixed style={{height:'30px'}}>
                           <a href="https://www.facebook.com/"><img src="/img/default/f.png"/></a>
                         </Fixed>
-                        <Fixed>
+                        <Fixed style={{height:'30px'}}>
                           <a href="https://twitter.com/"><img src="/img/default/t.png"/></a>
                         </Fixed>
-                        <Fixed>
+                        <Fixed style={{height:'30px'}}>
                           <a href="https://plus.google.com/"><img src="/img/default/g.png"/></a>
                         </Fixed>
                       </Layout>
-                    </div>
+                   
                   </Flex>
                   <Fixed>
-                    <div>This is footer</div>
+                   <ReactCSSTransitionGroup  transitionName="footer_hide" transitionEnterTimeout={200} transitionLeaveTimeout={500}>
+              
+                   {
+                      this.state.open ?
+                        <div>This is footer</div>
+                        :
+                        null
+                    }
+                    </ReactCSSTransitionGroup>
                   </Fixed>
                 </Layout>
               </footer>
