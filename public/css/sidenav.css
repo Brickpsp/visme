@@ -479,6 +479,7 @@ ul#docs-menu-Directives {
 .nav-header {
   background-color: transparent;
   height:80px; 
+  opacity: 0.7;
    background-color: #106CC8;
   background: linear-gradient(#185694, #106cc8);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #185694), color-stop(1, #106cc8));

@@ -27,7 +27,7 @@ export default class Grid_content extends React.Component {
                 onDrag={ this._preventTextSelect }
                 onResize={ this._preventTextSelect }
                 onResizeStop={ this._preventTextSelect }
-                 style={{width:'calc(100% - 80px)'}}
+                 
                 >
                 <Paper key="a" zDepth={1}  _grid={{ i: "a", x: 0, y: 0, w: 9, h: 4 }} style={{ overflow: 'auto' }}>
                     <TestList />

@@ -13,7 +13,7 @@ export const MainLayout = ({sidenav, content}) => (
       </Fixed>
       <Flex style={{overflowX:'hidden'}}>
        
-        <div style={{width:'100vw'}}>{content}</div>
+        <div style={{width:'calc(100vw - 80px)'}}>{content}</div>
          
       </Flex>
     </Layout>
