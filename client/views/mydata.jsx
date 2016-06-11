@@ -10,14 +10,16 @@ export default class Mydata extends React.Component {
         super();        
         this.state = {
             subscription: {
-                test: Meteor.subscribe("userData")
-            }
+                test: Meteor.subscribe("userData"),
+               
+            },            
         }
     }
 
     componentWillUnmount() {       
         this.state.subscription.test.stop();
     }
+
 
 
     render() {
@@ -28,7 +30,7 @@ export default class Mydata extends React.Component {
            
                         
       
-                <GridCnt/>
+                <GridCnt />
                 
             
            

@@ -11,9 +11,9 @@ export const MainLayout = ({sidenav, content}) => (
       <Fixed>
         <Sidenav/>
       </Fixed>
-      <Flex style={{overflow:'auto'}}>
+      <Flex style={{overflowX:'hidden'}}>
        
-        <div>{content}</div>
+        <div style={{width:'100vw'}}>{content}</div>
          
       </Flex>
     </Layout>
