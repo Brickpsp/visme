@@ -15,13 +15,25 @@ export default class list extends TrackerReact(Component) {
 
 
     toggledata(data) {
+         Meteor.call("toggledata", data, (error,data) =>{
+            if(error)
+            {
+               Bert.alert('Please Login','danger','fixed-top', 'fa-frown-o' );
+            }          
+        });
         //console.log(data);
-        Meteor.call('toggledata', data);
+        //Meteor.call('toggledata', data);
     }
 
     deletedata(data) {
+         Meteor.call("deletedata", data, (error,data) =>{
+            if(error)
+            {
+               Bert.alert('Please Login','danger','fixed-top', 'fa-frown-o' );
+            }          
+        });
         //console.log(data);
-        Meteor.call('deletedata', data);
+        //Meteor.call('deletedata', data);
     }
 
 
@@ -32,7 +44,7 @@ export default class list extends TrackerReact(Component) {
 
         return (
             <div>
-                <AppBar title="Add" iconElementLeft={<a/>}/>
+                <AppBar title="List" iconElementLeft={<a/>}/>
 
                 <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>

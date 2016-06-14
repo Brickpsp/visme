@@ -7,33 +7,24 @@ test = new Mongo.Collection('test');
 
 export default class Mydata extends React.Component {
     constructor() {
-        super();        
+        super();
         this.state = {
             subscription: {
                 test: Meteor.subscribe("userData"),
-               
-            },            
+
+            },
         }
     }
 
-    componentWillUnmount() {       
+    componentWillUnmount() {
         this.state.subscription.test.stop();
     }
 
 
 
     render() {
-       
-
         return (
-           
-           
-                        
-      
-                <GridCnt />
-                
-            
-           
+            <GridCnt />
         );
     }
 }

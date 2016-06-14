@@ -10,17 +10,24 @@ export default class testmongo extends Component {
         event.preventDefault();
 
         var text = this.refs.testdata.input.value.trim();
-        Meteor.call("adddata", text, () =>{
+        if(text)
+        {
+        Meteor.call("adddata", text, (error,data) =>{
+            if(error)
+            {
+               Bert.alert('Please Login','danger','fixed-top', 'fa-frown-o' );
+            }
+            else
               this.refs.testdata.input.value = "";
         });
-      
+        }
     }
 
     render() {
          
         return (            
             <div>
-            <AppBar title="Title" iconElementLeft={<a/>}/>
+            <AppBar title="Add Data" iconElementLeft={<a/>}/>
                 <form onSubmit={this.adddata.bind(this) }>
                     <TextField
                         hintText="Hint Text"

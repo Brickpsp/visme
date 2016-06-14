@@ -341,13 +341,16 @@ code:not(.highlight) {
   line-height: 40px;
   margin: 0;
   max-height: 40px;
-  overflow: hidden; 
-  padding-left: 100px;
+      text-indent: 40px;
+  overflow: hidden;  
   text-align: left;
   text-decoration: none;
   white-space: normal;
-  width: 100%;
+  width: 100%;     
+    text-transform: uppercase;
+  
 }
+
 .docs-menu .button:hover,
 .docs-menu .button:focus {
   background:  #267ED5 !important;
