@@ -12,9 +12,13 @@ import AccountsUIWrapper from './login.jsx';
 export default class Grid_content extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = { layouts: JSON.parse(JSON.stringify(getFromLS('layouts'))) };
-
+       try {
+        this.state = {layouts:JSON.parse(JSON.stringify(getFromLS('layouts')))};
+       }
+       catch(err)
+       {
+            this.state = {layouts:{}};
+       }
     }
 
     _preventTextSelect(a, b, c, d, event) {
