@@ -13,7 +13,7 @@ export default class AccountsUIWrapper extends Component {
     // Just render a placeholder container that will be filled in
     return (
         <div>
-            <AppBar title="Login" iconElementLeft={<a/>}/>
+            <AppBar style={{backgroundColor:'#267ED5'}} title="Login" iconElementLeft={<a/>}/>
         <Accounts.ui.LoginForm />
         </div>
     );

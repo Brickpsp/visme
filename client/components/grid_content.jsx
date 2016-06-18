@@ -7,7 +7,7 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 import Testmg from './insert.jsx';
 import TestList from './list.jsx';
 import AccountsUIWrapper from './login.jsx';
-
+var mouseX = -1e9, mouseY = -1e9;
 
 export default class Grid_content extends React.Component {
     constructor(props) {
@@ -28,7 +28,16 @@ export default class Grid_content extends React.Component {
 
     onLayoutChange(layouts) {
         saveToLS('layouts', layouts);
-
+    }
+    
+    
+    onDragStart(){
+        document.addEventListener('mousemove', function (event) {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+    });
+    //console.log(Math.hypot(0 - mouseX, 0 - mouseY));
+    
     }
 
     render() {
@@ -37,11 +46,12 @@ export default class Grid_content extends React.Component {
 
             <ResponsiveReactGridLayout
                 onLayoutChange={this.onLayoutChange.bind(this) }
+                onDragStart={this.onDragStart.bind(this) }
                 breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                 cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
                 onDrag={ this._preventTextSelect }
                 onResize={ this._preventTextSelect }
-                onResizeStop={ this._preventTextSelect }
+                onResizeStop={ this._preventTextSelect }               
                 >
                 <Paper key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 9, h: 4 }} style={{ overflow: 'auto' }}  zDepth={1}  >
                     <TestList />

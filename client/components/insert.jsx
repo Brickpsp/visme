@@ -27,14 +27,15 @@ export default class testmongo extends Component {
          
         return (            
             <div>
-            <AppBar title="Add Data" iconElementLeft={<a/>}/>
+            <AppBar style={{backgroundColor:'#267ED5'}}  title="Add Data" iconElementLeft={<a/>}/>
                 <form onSubmit={this.adddata.bind(this) }>
                     <TextField
                         hintText="Hint Text"
                         ref="testdata"
-                        floatingLabelText="Floating Label Text"
+                        floatingLabelText="Name"
                         style={{width: '80%',}}
                         /><br />
+                        <RaisedButton label="Add" primary={true} type="submit" />
                         </form>
                 <div>
                                

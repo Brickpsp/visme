@@ -290,7 +290,7 @@ code:not(.highlight) {
 .docs-menu ul {
   list-style: none;  
   margin:0;
-  padding-top: 20px;
+  /*padding-top: 20px;*/
    -webkit-transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all; 
     transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all; 
    overflow: hidden;
@@ -329,7 +329,7 @@ code:not(.highlight) {
               0px 0px 5px 1px rgba(0, 0, 0, 0.084);
 }
 .docs-menu > li {
-  border-bottom: 1px solid #106CC8;
+  border-bottom: 1px solid #267ED5;
  
 }
 
@@ -341,7 +341,7 @@ code:not(.highlight) {
   line-height: 40px;
   margin: 0;
   max-height: 40px;
-      text-indent: 40px;
+      text-indent: 50px;
   overflow: hidden;  
   text-align: left;
   text-decoration: none;

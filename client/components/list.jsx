@@ -44,14 +44,14 @@ export default class list extends TrackerReact(Component) {
 
         return (
             <div>
-                <AppBar title="List" iconElementLeft={<a/>}/>
+                <AppBar style={{backgroundColor:'#267ED5'}} title="List" iconElementLeft={<a/>}/>
 
                 <Table>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
                             <TableHeaderColumn>Status</TableHeaderColumn>
+                            <TableHeaderColumn>Date</TableHeaderColumn>
                             <TableHeaderColumn>Command</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
