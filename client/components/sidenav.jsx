@@ -1,5 +1,6 @@
 import React from 'react';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var onClickOutside = require('react-onclickoutside');
 import MenuItem from 'material-ui/MenuItem';
 import CanvasComponent from './web_net_ani';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
@@ -10,8 +11,7 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 const darkMuiTheme = getMuiTheme(darkBaseTheme);
 
-export default class sidenav extends React.Component {
-
+export class sidenav extends React.Component {
   constructor(props) {
     super(props);
     this.state = { open: false };
@@ -123,5 +123,10 @@ export default class sidenav extends React.Component {
       </MuiThemeProvider>
     );
   }
-
+handleClickOutside(event) {
+       this.setState({ open: false });
+       this.setState({ open_drawer: {} });
+    }
 }
+
+export default onClickOutside(sidenav);
