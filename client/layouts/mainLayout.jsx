@@ -4,6 +4,10 @@ import {Layout, Flex, Fixed} from 'react-layout-pane';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+import '/public/css/animation.css';
+import '/public/css/sidenav.css';
+import '/public/css/base.css';
+
 export const MainLayout = ({sidenav, content}) => (
    <MuiThemeProvider muiTheme={getMuiTheme() }>
 

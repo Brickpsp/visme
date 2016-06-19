@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -27,13 +26,12 @@ export default class testmongo extends Component {
          
         return (            
             <div>
-            <AppBar style={{backgroundColor:'#267ED5'}}  title="Add Data" iconElementLeft={<a/>}/>
-                <form onSubmit={this.adddata.bind(this) }>
+               <form onSubmit={this.adddata.bind(this) }>
                     <TextField
                         hintText="Hint Text"
                         ref="testdata"
                         floatingLabelText="Name"
-                        style={{width: '80%',}}
+                        style={{width: '80%', paddingLeft: '5%'}}
                         /><br />
                         <RaisedButton label="Add" primary={true} type="submit" />
                         </form>

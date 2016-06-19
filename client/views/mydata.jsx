@@ -3,7 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import GridCnt from '/client/components/grid_content.jsx';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-import '/public/css/animation.css';
+
 
 test = new Mongo.Collection('test');
 

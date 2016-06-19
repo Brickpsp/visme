@@ -6,7 +6,7 @@ import {Layout, Flex, Fixed} from 'react-layout-pane';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import '/public/css/sidenav.css';
+
 
 const darkMuiTheme = getMuiTheme(darkBaseTheme);
 

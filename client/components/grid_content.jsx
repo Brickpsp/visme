@@ -1,6 +1,7 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
 import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
 import {Responsive, WidthProvider} from 'react-grid-layout';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -35,6 +36,11 @@ export default class Grid_content extends React.Component {
         document.addEventListener('mousemove', function (event) {
       mouseX = event.clientX;
       mouseY = event.clientY;
+
+      /*var node = ReactDOM.findDOMNode(this);
+        console.log(node);
+        var rect = node.getBoundingClientRect();
+        console.log(rect);*/
     });
     //console.log(Math.hypot(0 - mouseX, 0 - mouseY));
     
@@ -45,21 +51,25 @@ export default class Grid_content extends React.Component {
         return (
 
             <ResponsiveReactGridLayout
+           
                 onLayoutChange={this.onLayoutChange.bind(this) }
-                onDragStart={this.onDragStart.bind(this) }
+                draggableHandle='div.mui-appbar'
                 breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                 cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
                 onDrag={ this._preventTextSelect }
                 onResize={ this._preventTextSelect }
                 onResizeStop={ this._preventTextSelect }               
-                >
+                >                
                 <Paper key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 9, h: 4 }} style={{ overflow: 'auto' }}  zDepth={1}  >
+                <AppBar className="mui-appbar" title="List" iconElementLeft={<a/>}/>
                     <TestList />
-                </Paper>
+                </Paper>               
                 <Paper  key="1"  _grid={this.state.layouts[1] || { i: "b", x: 11, y: 0, w: 2, h: 2 }} style={{ overflow: 'auto' }}>
+                 <AppBar className="mui-appbar"  title="Add Data" iconElementLeft={<a/>}/>            
                     <Testmg />
                 </Paper>
                 <Paper  key="2"  _grid={this.state.layouts[2] || { i: "c", x: 0, y: 4, w: 3, h: 2 }} style={{ overflow: 'auto' }}>
+                <AppBar className="mui-appbar" title="Login" iconElementLeft={<a/>}/>       
                     <AccountsUIWrapper />
                 </Paper>
             </ResponsiveReactGridLayout>
