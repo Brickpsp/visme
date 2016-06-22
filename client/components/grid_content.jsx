@@ -5,71 +5,74 @@ import AppBar from 'material-ui/AppBar';
 import {Responsive, WidthProvider} from 'react-grid-layout';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
-import Testmg from './insert.jsx';
-import TestList from './list.jsx';
-import AccountsUIWrapper from './login.jsx';
-var mouseX = -1e9, mouseY = -1e9;
+import Insertwork from './grid_content_component_child/insert.jsx';
+import ListWork from './grid_content_component_child/list.jsx';
+import DetailWork from './grid_content_component_child/detail.jsx';
+import AccountsUIWrapper from './grid_content_component_child/login.jsx';
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 export default class Grid_content extends React.Component {
     constructor(props) {
         super(props);
-       try {
-        this.state = {layouts:JSON.parse(JSON.stringify(getFromLS('layouts')))};
-       }
-       catch(err)
-       {
-            this.state = {layouts:{}};
-       }
+        this.state = { detailwork: false };
+        this.state = { id: {} };
+        try {
+            this.state = { layouts: JSON.parse(JSON.stringify(getFromLS('layouts'))) };
+        }
+        catch (err) {
+            this.state = { layouts: {} };
+        }
     }
 
     _preventTextSelect(a, b, c, d, event) {
         event.preventDefault();
-
     };
 
     onLayoutChange(layouts) {
         saveToLS('layouts', layouts);
     }
-    
-    
-    onDragStart(){
-        document.addEventListener('mousemove', function (event) {
-      mouseX = event.clientX;
-      mouseY = event.clientY;
 
-      /*var node = ReactDOM.findDOMNode(this);
-        console.log(node);
-        var rect = node.getBoundingClientRect();
-        console.log(rect);*/
-    });
-    //console.log(Math.hypot(0 - mouseX, 0 - mouseY));
-    
+    go_to_detail_work(_id) {
+        this.setState({ id: _id });
+        this.setState({ detailwork: true });
+    }
+
+     go_to_list_work() {
+       
+        this.setState({ detailwork: false });
     }
 
     render() {
-
         return (
-
             <ResponsiveReactGridLayout
-           
                 onLayoutChange={this.onLayoutChange.bind(this) }
                 draggableHandle='div.mui-appbar'
                 breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                 cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
                 onDrag={ this._preventTextSelect }
                 onResize={ this._preventTextSelect }
-                onResizeStop={ this._preventTextSelect }               
-                >                
-                <Paper key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 9, h: 4 }} style={{ overflow: 'auto' }}  zDepth={1}  >
-                <AppBar className="mui-appbar" title="List" iconElementLeft={<a/>}/>
-                    <TestList />
-                </Paper>               
-                <Paper  key="1"  _grid={this.state.layouts[1] || { i: "b", x: 11, y: 0, w: 2, h: 2 }} style={{ overflow: 'auto' }}>
-                 <AppBar className="mui-appbar"  title="Add Data" iconElementLeft={<a/>}/>            
-                    <Testmg />
+                onResizeStop={ this._preventTextSelect }
+                >
+                <Paper key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 8, h: 6, minW:6, minH:2 }} style={{ overflow: 'auto' }}  zDepth={1}>
+                    <AppBar className="mui-appbar" title="List Work" iconElementLeft={<a/>}/>
+                    <ReactCSSTransitionGroup
+                        transitionName = "change_list"
+                        transitionEnterTimeout = {600} transitionLeaveTimeout = {600}>
+                        {
+                            this.state.detailwork ?
+                                <DetailWork key="01"  id={this.state.id} callback={this.go_to_list_work.bind(this) }/>
+                                :
+                                <ListWork key="02" callback={this.go_to_detail_work.bind(this) }/>
+                        }
+                    </ReactCSSTransitionGroup>
                 </Paper>
-                <Paper  key="2"  _grid={this.state.layouts[2] || { i: "c", x: 0, y: 4, w: 3, h: 2 }} style={{ overflow: 'auto' }}>
-                <AppBar className="mui-appbar" title="Login" iconElementLeft={<a/>}/>       
+                <Paper key="1" _grid={this.state.layouts[1] || { i: "b", x: 8, y: 2, w: 4, h: 2, minW:3, minH:2}} style={{ overflow: 'auto' }} zDepth={1}>
+                    <AppBar className="mui-appbar"  title="Add Work" iconElementLeft={<a/>}/>
+                    <Insertwork />                   
+
+                </Paper>
+                <Paper key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 2, minW:3, minH:2}} style={{ overflow: 'auto' }} zDepth={1}>
+                    <AppBar className="mui-appbar" title="Login" iconElementLeft={<a/>}/>
                     <AccountsUIWrapper />
                 </Paper>
             </ResponsiveReactGridLayout>

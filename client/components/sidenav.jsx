@@ -2,7 +2,7 @@ import React from 'react';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var onClickOutside = require('react-onclickoutside');
 import MenuItem from 'material-ui/MenuItem';
-import CanvasComponent from './web_net_ani';
+import CanvasComponent from './sidenav_component_child/web_net_ani';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -40,7 +40,7 @@ export class sidenav extends React.Component {
     return (
 
       <MuiThemeProvider muiTheme={darkMuiTheme}>
-        <div className="site-sidenav-collapse md-sidenav-left md-whiteframe-z2" style={this.state.open_drawer}>
+        <div className="site-sidenav-collapse md-sidenav-left md-whiteframe-z2 helvetica" style={this.state.open_drawer}>
           <CanvasComponent/>
           <Layout type="column">
 
