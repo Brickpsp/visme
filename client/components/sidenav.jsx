@@ -76,9 +76,8 @@ export class sidenav extends React.Component {
                 {
                   this.state.open ?
                   <ul className="docs-menu">
-                    <li><MenuItem className="button" href="/">Menu Item</MenuItem></li>               
-                    <li><MenuItem className="button" href="/a">Menu Item 2</MenuItem></li>
-                     <li><MenuItem className="button" href="/b">Menu Item 3</MenuItem></li>
+                    <li><MenuItem className="button" href="/">HOME</MenuItem></li>               
+                    <li><MenuItem className="button" href="/a">About</MenuItem></li>                  
                       </ul>
                     :
                     null

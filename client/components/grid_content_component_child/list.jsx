@@ -36,7 +36,7 @@ export default class list extends TrackerReact(Component) {
         var works = this.work_data();
 
         return (
-            <div>
+            <div style={{overflow: 'auto', height : 'calc(100% - 64px)'}}>
                 <Table >
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
@@ -48,7 +48,7 @@ export default class list extends TrackerReact(Component) {
                         </TableRow>
                     </TableHeader>
 
-                    <TableBody displayRowCheckbox={false} >
+                    <TableBody displayRowCheckbox={false} showRowHover={true}>
                         {works.map((row, index) => (
                             <TableRow key={index} selected={true} >
                                 <TableRowColumn  >{row.title}</TableRowColumn>

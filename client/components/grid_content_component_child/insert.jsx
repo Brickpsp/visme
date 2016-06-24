@@ -4,7 +4,6 @@ import TextField from 'material-ui/TextField';
 
 
 export default class Insertwork extends Component {
-
     addwork(event) {
         event.preventDefault();
         var title = this.refs.title.input.value.trim();

@@ -53,25 +53,25 @@ export default class Grid_content extends React.Component {
                 onResize={ this._preventTextSelect }
                 onResizeStop={ this._preventTextSelect }
                 >
-                <Paper key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 8, h: 6, minW:6, minH:2 }} style={{ overflow: 'auto' }}  zDepth={1}>
+                <Paper key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 8, h: 6, minW:6, minH:2 }} style={{ overflow: 'hidden' }}  zDepth={1}>
                     <AppBar className="mui-appbar" title="List Work" iconElementLeft={<a/>}/>
-                    <ReactCSSTransitionGroup
+                    <ReactCSSTransitionGroup                    
                         transitionName = "change_list"
                         transitionEnterTimeout = {600} transitionLeaveTimeout = {600}>
                         {
                             this.state.detailwork ?
-                                <DetailWork key="01"  id={this.state.id} callback={this.go_to_list_work.bind(this) }/>
+                                <DetailWork  key="01"  id={this.state.id} callback={this.go_to_list_work.bind(this) }/>
                                 :
-                                <ListWork key="02" callback={this.go_to_detail_work.bind(this) }/>
+                                <ListWork  key="02" callback={this.go_to_detail_work.bind(this) }/>
                         }
                     </ReactCSSTransitionGroup>
                 </Paper>
-                <Paper key="1" _grid={this.state.layouts[1] || { i: "b", x: 8, y: 2, w: 4, h: 2, minW:3, minH:2}} style={{ overflow: 'auto' }} zDepth={1}>
+                <Paper key="1" _grid={this.state.layouts[1] || { i: "b", x: 8, y: 2, w: 4, h: 2, minW:3, minH:2}} style={{ overflow: 'hidden' }} zDepth={1}>
                     <AppBar className="mui-appbar"  title="Add Work" iconElementLeft={<a/>}/>
                     <Insertwork />                   
 
                 </Paper>
-                <Paper key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 2, minW:3, minH:2}} style={{ overflow: 'auto' }} zDepth={1}>
+                <Paper key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 2, minW:3, minH:2}} style={{ overflow: 'hidden' }} zDepth={1}>
                     <AppBar className="mui-appbar" title="Login" iconElementLeft={<a/>}/>
                     <AccountsUIWrapper />
                 </Paper>
