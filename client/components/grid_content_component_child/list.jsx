@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import Checkbox from 'material-ui/Checkbox';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentDel from 'material-ui/svg-icons/content/remove';
-import Goto from 'material-ui/svg-icons/content/create';
+import { DataTable, TableHeader, Checkbox, FABButton, Icon } from 'react-mdl';
 
 export default class list extends TrackerReact(Component) {
     work_data() {
@@ -35,47 +30,32 @@ export default class list extends TrackerReact(Component) {
     render() {
         var works = this.work_data();
 
+        var element = {};
+
         return (
-            <div style={{overflow: 'auto', height : 'calc(100% - 64px)'}}>
-                <Table >
-                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-                        <TableRow>
-                            <TableHeaderColumn>Title</TableHeaderColumn>
-                            <TableHeaderColumn>Description</TableHeaderColumn>
-                            <TableHeaderColumn>Complete</TableHeaderColumn>
-                            <TableHeaderColumn>Date Created</TableHeaderColumn>
-                            <TableHeaderColumn>Command</TableHeaderColumn>
-                        </TableRow>
-                    </TableHeader>
-
-                    <TableBody displayRowCheckbox={false} showRowHover={true}>
-                        {works.map((row, index) => (
-                            <TableRow key={index} selected={true} >
-                                <TableRowColumn  >{row.title}</TableRowColumn>
-                                <TableRowColumn>{row.description}</TableRowColumn>
-                                <TableRowColumn>
-                                    <Checkbox
-                                        onClick={this.togglework.bind(this, row)}                                       
-                                        checked={row.complete}
-                                        />
-                                </TableRowColumn>
-                                <TableRowColumn>{row.CreateAT.toDateString() }</TableRowColumn>
-                                <TableRowColumn>
-                                    <FloatingActionButton mini={true} secondary={true} style={{ marginRight: '20px' }} onClick={this.deletework.bind(this, row) }>
-                                        <ContentDel />
-                                    </FloatingActionButton>
-                                    <FloatingActionButton mini={true} onClick={this.go_to_work.bind(this, row._id) }>
-                                        <Goto />
-                                    </FloatingActionButton>
-                                </TableRowColumn>
-                            </TableRow>
-                        )) }
-                    </TableBody>
-
-                </Table>
-
-            </div>
-
+           
+                <DataTable
+                    shadow={0}
+                    rows={works}
+                    rowKeyColumn="_id"
+                    style={{ width: '100% ' }}
+                    >
+                    <TableHeader name="title" tooltip="ex1">Title</TableHeader>
+                    <TableHeader  name="description" tooltip="ex2">Description</TableHeader>
+                    <TableHeader name="complete" cellFormatter={(complete, work) => <Checkbox ripple checked={complete} onChange={ this.togglework.bind(this, work) }/>} tooltip="ex3">Complete</TableHeader>
+                    <TableHeader  name="CreateAT" cellFormatter={(CreateAT) => CreateAT.toLocaleDateString() } tooltip="ex4">Date Created</TableHeader>
+                    <TableHeader name="command" cellFormatter={(Command, work) =>
+                        <div>
+                            <FABButton mini colored onClick={this.deletework.bind(this, work)} style={{marginRight: '10px' }}>
+                                <Icon name="delete" />
+                            </FABButton>
+                            <FABButton mini>
+                                <Icon name="create" onClick={this.go_to_work.bind(this, work._id) }/>
+                            </FABButton>
+                        </div>
+                    }  tooltip="ex5">Command</TableHeader>
+                </DataTable>
+           
         );
 
     }

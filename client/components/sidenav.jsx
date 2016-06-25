@@ -1,15 +1,10 @@
 import React from 'react';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var onClickOutside = require('react-onclickoutside');
-import MenuItem from 'material-ui/MenuItem';
 import CanvasComponent from './sidenav_component_child/web_net_ani';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import { Button } from 'react-mdl';
 
-
-const darkMuiTheme = getMuiTheme(darkBaseTheme);
 
 export class sidenav extends React.Component {
   constructor(props) {
@@ -39,7 +34,7 @@ export class sidenav extends React.Component {
 
     return (
 
-      <MuiThemeProvider muiTheme={darkMuiTheme}>
+      
         <div className="site-sidenav-collapse md-sidenav-left md-whiteframe-z2 helvetica" style={this.state.open_drawer}>
           <CanvasComponent/>
           <Layout type="column">
@@ -76,8 +71,8 @@ export class sidenav extends React.Component {
                 {
                   this.state.open ?
                   <ul className="docs-menu">
-                    <li><MenuItem className="button" href="/">HOME</MenuItem></li>               
-                    <li><MenuItem className="button" href="/a">About</MenuItem></li>                  
+                    <li><Button className="button" ripple href="/">HOME</Button></li>               
+                    <li><Button className="button" ripple href="/a">About</Button></li>                  
                       </ul>
                     :
                     null
@@ -119,7 +114,7 @@ export class sidenav extends React.Component {
           </Layout>
 
         </div>
-      </MuiThemeProvider>
+      
     );
   }
 handleClickOutside(event) {

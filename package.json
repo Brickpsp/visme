@@ -4,22 +4,20 @@
   "scripts": {
     "start": "meteor run"
   },
-  "dependencies": {
-    "material-ui": "^0.15.0",
+  "dependencies": {   
     "meteor-node-stubs": "~0.2.0",
-    "normalize.css": "^4.1.1",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-addons-pure-render-mixin": "^15.1.0",
     "react-dom": "^15.0.2",
     "react-grid-layout": "^0.12.6",
     "react-layout-pane": "^0.1.16",
+    "react-mdl": "^1.5.4",
     "react-mounter": "^1.2.0",
     "react-no-ssr": "^1.1.0",
     "react-onclickoutside": "^5.2.0",
     "react-rte": "^0.3.0",
-    "react-tap-event-plugin": "^1.0.0",
-    "react-toolbox": "^1.0.1"
+    "react-tap-event-plugin": "^1.0.0"
   },
   "version": "1.0.0",
   "main": "index.js",

@@ -71,23 +71,27 @@
 .change_list-enter {
   transform: scale3d(.8, .8, .8);
    opacity: 0;
+    width: 100%;
    position: absolute;
 }
 
 .change_list-enter.change_list-enter-active {
    transform: scale3d(1, 1, 1);
+    width: 100%;
    transition: all 500ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
     opacity: 1;    
 }
 
 .change_list-leave {
    opacity: 1;
+    width: 100%;
     transform: scale3d(1, 1, 1);
     position: absolute;
 }
 
 .change_list-leave.change_list-leave-active {
    opacity: 0;
+   width: 100%;
    transform: scale3d(.8, .8, .8);
    transition: all 500ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
    

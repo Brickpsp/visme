@@ -5,6 +5,8 @@ html, body {
         height: 64px;
         background-color:#267ED5 !important;
         cursor: move;
+        color: #fff !important;
+        flex-shrink: 0;
 }
 .react-grid-layout {
     position: relative;

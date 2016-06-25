@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import LinearProgress from 'material-ui/LinearProgress';
-import Checkbox from 'material-ui/Checkbox';
 import RichTextEditor from 'react-rte';
 import NoSSR from 'react-no-ssr';
+import { Button, Checkbox, Card, CardTitle, CardActions } from 'react-mdl';
 
 export default class detail extends TrackerReact(Component) {
     constructor(props) {
@@ -22,7 +18,7 @@ export default class detail extends TrackerReact(Component) {
     }
 
     toggledata(data) {
-        Meteor.call("toggledata", data, (error, data) => {
+        Meteor.call("togglework", data, (error, data) => {
             if (error) {
                 Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
             }
@@ -53,8 +49,8 @@ export default class detail extends TrackerReact(Component) {
         if (!work) {
             return (
                 <div>
-                    <LinearProgress mode="indeterminate" color='#FF9800'/>
-                    <RaisedButton label="Back" primary={true} style={{ marginRight: '20px' }} onClick={ handleToggle} />
+                    <ProgressBar indeterminate color='#FF9800'/>
+                    <Button raised colored ripple style={{ marginRight: '20px' }} onClick={ handleToggle}>Back</Button>
                 </div>
             );
         }
@@ -62,28 +58,25 @@ export default class detail extends TrackerReact(Component) {
 
 
             <div style={{ width: '100%', height: 'calc(100% - 64px)', overflow: 'auto' }}>
-                <Toolbar>
-                    <ToolbarGroup>
-                        <RaisedButton label="Back" primary={true} style={{ marginRight: '20px' }} onClick={ handleToggle} />
-                        <RaisedButton label="Save" secondary={true}  onClick={this.adddetailwork.bind(this, work) } />
-                        <ToolbarSeparator />
-                        <ToolbarTitle style={{ textAlign: 'center', textTransform: 'uppercase', fontSize: '30px', paddingLeft: '30px' }} text={work.title} />
-                    </ToolbarGroup>
-                    <ToolbarGroup lastChild={true}>
-                        <div style={{ marginTop: 16, paddingRight: 8 }}>
-                            <Checkbox label="Done"
-                                onClick={this.toggledata.bind(this, work) }
-                                checked={work.complete}/>
-                        </div>
-                    </ToolbarGroup>
-                </Toolbar>
-                <NoSSR  onSSR={<div>Loading</div>}>
-                    <RichTextEditor
-                        style={{ height: '100%' }}
-                        value={this.state.value}
-                        onChange={this.onChange.bind(this) }
-                        />
-                </NoSSR>
+                <Card shadow={0} style={{ width: '100%' }}>
+                    <CardTitle style={{backgroundColor: '#d4d4d5', textTransform: 'capitalize' }}>
+                        <Button raised colored ripple style={{ width:'80px', marginLeft: '5px', marginRight: '20px' }} onClick={ handleToggle}>Back</Button>
+                        <Button raised accent ripple style={{ width:'80px', marginRight: '15px' }} onClick={this.adddetailwork.bind(this, work) }>Save</Button>
+                        <div style={{borderLeft:'1px solid #000',height:'30px', marginRight: '5px'}}></div>
+                        <div style={{ fontSize: '24px', fontWeight: '300', color: 'white', paddingRight: 'calc(100% - 300px)' }}>{work.title}</div>
+                        <Checkbox ripple
+                            label="Done"                           
+                            onChange={this.toggledata.bind(this, work) }
+                            checked={work.complete}/>
+                    </CardTitle>
+                    <NoSSR  onSSR={<div>Loading</div>}>
+                        <RichTextEditor
+                            style={{ height: '900px' }}
+                            value={this.state.value}
+                            onChange={this.onChange.bind(this) }
+                            />
+                    </NoSSR>
+                </Card>
             </div>
 
 

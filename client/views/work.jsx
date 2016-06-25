@@ -6,7 +6,7 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 work = new Mongo.Collection('work');
 
-export default class Mydata extends React.Component {
+export default class Work extends React.Component {
     constructor() {
         super();
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);

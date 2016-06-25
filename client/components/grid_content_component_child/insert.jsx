@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import {Textfield, Button} from 'react-mdl';
 
 
 export default class Insertwork extends Component {
     addwork(event) {
         event.preventDefault();
-        var title = this.refs.title.input.value.trim();
-        var description = this.refs.description.input.value.trim();
+        var title = this.refs.title.refs.input.value.trim();
+        var description = this.refs.description.refs.input.value.trim();
         if (title && description) {
             Meteor.call("addwork", title, description, (error, data) => {
                 if (error) {
                     Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
                 }
                 else {
-                    this.refs.title.input.value = "";
-                    this.refs.description.input.value = "";
+                    this.refs.title.refs.input.value = "";
+                    this.refs.description.refs.input.value = "";
                 }
             });
         }
@@ -27,17 +26,19 @@ export default class Insertwork extends Component {
             <div>
                 <form onSubmit={this.addwork.bind(this) }>
                     <div style={{ width: '80%', paddingLeft: '5%' }}>
-                        <TextField
-                            hintText="Title of Work"
+                        <Textfield 
+                        floatingLabel
+                            
                             ref="title"
-                            floatingLabelText="Title"
+                            label="Title"
                             /><br />
-                        <TextField
-                            hintText="Description of work"
+                        <Textfield 
+                        floatingLabel
+                            
                             ref="description"
-                            floatingLabelText="Description"
+                            label="Description"
                             /><br />
-                        <RaisedButton label="Add" primary={true} type="submit" />
+                            <Button raised colored ripple type="submit">Add</Button>                        
                     </div>
                 </form>
                 <div>
