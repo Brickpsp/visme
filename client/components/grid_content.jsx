@@ -55,7 +55,7 @@ export default class Grid_content extends React.Component {
                 >
                 <Card shadow={1} key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 8, h: 6, minW: 6, minH: 2 }} style={{ overflow: 'hidden' }}>
                     <CardTitle className="mui-appbar" >List Work</CardTitle>
-                    <CardActions border style={{ padding: '0px', border: '0px', overflow: 'auto' }}>
+                    <CardActions border style={{ padding: '0px', border: '0px',  overflow: 'auto'}}>
                         <ReactCSSTransitionGroup
                             transitionName = "change_list"
                             transitionEnterTimeout = {600}

@@ -72,6 +72,7 @@
   transform: scale3d(.8, .8, .8);
    opacity: 0;
     width: 100%;
+    height: calc(100% - 64px);
    position: absolute;
 }
 
@@ -87,6 +88,7 @@
     width: 100%;
     transform: scale3d(1, 1, 1);
     position: absolute;
+     height: calc(100% - 64px);
 }
 
 .change_list-leave.change_list-leave-active {

@@ -33,12 +33,12 @@ export default class list extends TrackerReact(Component) {
         var element = {};
 
         return (
-           
+            
                 <DataTable
                     shadow={0}
                     rows={works}
                     rowKeyColumn="_id"
-                    style={{ width: '100% ' }}
+                    style={{ width: '100%', flexShrink: '0'}}
                     >
                     <TableHeader name="title" tooltip="ex1">Title</TableHeader>
                     <TableHeader  name="description" tooltip="ex2">Description</TableHeader>
@@ -55,7 +55,7 @@ export default class list extends TrackerReact(Component) {
                         </div>
                     }  tooltip="ex5">Command</TableHeader>
                 </DataTable>
-           
+          
         );
 
     }

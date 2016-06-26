@@ -57,17 +57,21 @@ export default class detail extends TrackerReact(Component) {
         return (
 
 
-            <div style={{ width: '100%', height: 'calc(100% - 64px)', overflow: 'auto' }}>
+            <div style={{ width: '100%', overflow: 'auto' }}>
                 <Card shadow={0} style={{ width: '100%' }}>
                     <CardTitle style={{backgroundColor: '#d4d4d5', textTransform: 'capitalize' }}>
-                        <Button raised colored ripple style={{ width:'80px', marginLeft: '5px', marginRight: '20px' }} onClick={ handleToggle}>Back</Button>
-                        <Button raised accent ripple style={{ width:'80px', marginRight: '15px' }} onClick={this.adddetailwork.bind(this, work) }>Save</Button>
-                        <div style={{borderLeft:'1px solid #000',height:'30px', marginRight: '5px'}}></div>
-                        <div style={{ fontSize: '24px', fontWeight: '300', color: 'white', paddingRight: 'calc(100% - 300px)' }}>{work.title}</div>
-                        <Checkbox ripple
+                        <Button raised colored ripple style={{ width:'100px', marginLeft: '5px', marginRight: '20px' }} onClick={ handleToggle}>Back</Button>
+                        <Button raised accent ripple style={{ width:'100px', marginRight: '15px' }} onClick={this.adddetailwork.bind(this, work) }>Save</Button>
+                          
+                        <div style={{borderLeft:'1px solid #000',height:'30px', marginRight: '15px'}}></div>
+                        <div style={{ fontSize: '24px', fontWeight: '300', color: 'white'}}>{work.title}</div>
+                        <div style={{ width: '100px', overflow: 'hidden', right: '0px', position: 'absolute', paddingTop: '8px'}}>
+                      <Checkbox ripple
                             label="Done"                           
                             onChange={this.toggledata.bind(this, work) }
-                            checked={work.complete}/>
+                            checked={work.complete}
+                            />
+                            </div>
                     </CardTitle>
                     <NoSSR  onSSR={<div>Loading</div>}>
                         <RichTextEditor
