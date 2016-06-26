@@ -9,6 +9,7 @@ import '/public/css/base.css';
 import '/node_modules/react-mdl/extra/material.css';
 import '/node_modules/react-mdl/extra/material.js';
 
+DocHead.setTitle('BuildTest');
 export const MainLayout = ({sidenav, content}) => (  
   <div>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>

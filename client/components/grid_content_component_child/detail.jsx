@@ -55,14 +55,11 @@ export default class detail extends TrackerReact(Component) {
             );
         }
         return (
-
-
-            <div style={{ width: '100%', overflow: 'auto' }}>
-                <Card shadow={0} style={{ width: '100%' }}>
+            <div>
+                <Card shadow={0} style={{ width: '100%',  overflow: 'auto' }}>
                     <CardTitle style={{backgroundColor: '#d4d4d5', textTransform: 'capitalize' }}>
                         <Button raised colored ripple style={{ width:'100px', marginLeft: '5px', marginRight: '20px' }} onClick={ handleToggle}>Back</Button>
-                        <Button raised accent ripple style={{ width:'100px', marginRight: '15px' }} onClick={this.adddetailwork.bind(this, work) }>Save</Button>
-                          
+                        <Button raised accent ripple style={{ width:'100px', marginRight: '15px' }} onClick={this.adddetailwork.bind(this, work) }>Save</Button>                          
                         <div style={{borderLeft:'1px solid #000',height:'30px', marginRight: '15px'}}></div>
                         <div style={{ fontSize: '24px', fontWeight: '300', color: 'white'}}>{work.title}</div>
                         <div style={{ width: '100px', overflow: 'hidden', right: '0px', position: 'absolute', paddingTop: '8px'}}>
@@ -73,13 +70,14 @@ export default class detail extends TrackerReact(Component) {
                             />
                             </div>
                     </CardTitle>
+                    <CardActions>
                     <NoSSR  onSSR={<div>Loading</div>}>
-                        <RichTextEditor
-                            style={{ height: '900px' }}
+                        <RichTextEditor                            
                             value={this.state.value}
                             onChange={this.onChange.bind(this) }
                             />
                     </NoSSR>
+                    </CardActions>
                 </Card>
             </div>
 

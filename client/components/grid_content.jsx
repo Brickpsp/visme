@@ -75,7 +75,7 @@ export default class Grid_content extends React.Component {
                         <Insertwork />
                     </CardActions>
                 </Card>
-                <Card shadow={1} key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 2, minW: 3, minH: 2 }} style={{ overflow: 'hidden' }}>
+                <Card shadow={1} key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 3, minW: 3, minH: 2 }} style={{ overflow: 'hidden' }}>
                     <CardTitle className="mui-appbar" >Login</CardTitle>
                     <CardActions border>
                         <AccountsUIWrapper />

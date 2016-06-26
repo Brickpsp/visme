@@ -26,17 +26,19 @@ export default class Insertwork extends Component {
             <div>
                 <form onSubmit={this.addwork.bind(this) }>
                     <div style={{ width: '80%', paddingLeft: '5%' }}>
-                        <Textfield 
-                        floatingLabel                           
+                        <Textfield
+                            floatingLabel
+                            required
                             ref="title"
                             label="Title"
                             /><br />
-                        <Textfield 
-                        floatingLabel                           
+                        <Textfield
+                            floatingLabel
+                            required
                             ref="description"
                             label="Description"
                             /><br />
-                            <Button raised colored ripple  style={{ width:'100px'}} type="submit">Add</Button>                        
+                        <Button raised colored ripple  style={{ width: '100px' }} type="submit">Add</Button>
                     </div>
                 </form>
                 <div>
