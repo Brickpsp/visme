@@ -25,7 +25,7 @@ export default class Insertwork extends Component {
         return (
             <div>
                 <form onSubmit={this.addwork.bind(this) }>
-                    <div style={{ width: '80%', paddingLeft: '5%' }}>
+                    <div>
                         <Textfield
                             floatingLabel
                             required

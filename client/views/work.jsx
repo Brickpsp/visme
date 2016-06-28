@@ -32,7 +32,7 @@ export default class Work extends React.Component {
                 transitionName="animation-change-view"
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={500}
-                transitionAppearTimeout={500}
+                transitionAppearTimeout={800}
                 transitionAppear={true}
                 >
                 <GridCnt key='G'/>

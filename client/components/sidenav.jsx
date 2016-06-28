@@ -33,7 +33,13 @@ export class sidenav extends React.Component {
 
 
     return (
-
+ <ReactCSSTransitionGroup               
+                transitionName="sidenav-begin"
+                transitionEnterTimeout={800}
+                transitionLeaveTimeout={800}
+                transitionAppearTimeout={800}
+                transitionAppear={true}
+                >
       
         <div className="site-sidenav-collapse md-sidenav-left md-whiteframe-z2 helvetica" style={this.state.open_drawer}>
           <CanvasComponent/>
@@ -41,7 +47,7 @@ export class sidenav extends React.Component {
 
             <Fixed className="nav-header">
               <Layout type="row" className="docs-logotype md-heading">
-                <Fixed>
+                <Flex>
                   <div id="nav-icon2" className = {nav_icon} onClick={ handleToggle}>
                     <span></span>
                     <span></span>
@@ -50,7 +56,7 @@ export class sidenav extends React.Component {
                     <span></span>
                     <span></span>
                   </div>
-                </Fixed>
+                </Flex>
                 <Flex>
                 </Flex>
                 <Fixed>
@@ -66,13 +72,13 @@ export class sidenav extends React.Component {
               </Layout>
             </Fixed>
             <Flex className="content">
-              <ReactCSSTransitionGroup  transitionName="docs-menu" transitionEnterTimeout={200} transitionLeaveTimeout={200}>
+              <ReactCSSTransitionGroup  transitionName="docs-menu" transitionEnterTimeout={500} transitionLeaveTimeout={200}>
                   
                 {
                   this.state.open ?
                   <ul className="docs-menu">
                     <li><Button className="button" ripple href="/">HOME</Button></li>               
-                    <li><Button className="button" ripple href="/a">About</Button></li>                  
+                    <li><Button className="button" ripple href="/about">About</Button></li>                  
                       </ul>
                     :
                     null
@@ -114,7 +120,7 @@ export class sidenav extends React.Component {
           </Layout>
 
         </div>
-      
+      </ReactCSSTransitionGroup>
     );
   }
 handleClickOutside(event) {

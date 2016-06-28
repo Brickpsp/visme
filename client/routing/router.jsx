@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 import {MainLayout} from '/client/layouts/mainLayout.jsx';
 import Work from '/client/views/work.jsx';
-import DetailWork from '/client/components/grid_content_component_child/detail.jsx';
+import About from '/client/views/about.jsx';
 
 FlowRouter.route("/", {
   action () {
@@ -13,11 +13,26 @@ FlowRouter.route("/", {
   }
 });
 
-FlowRouter.route("/a", {
+FlowRouter.route("/about", {
   action () {
-    mount(MainLayout, {           
+    mount(MainLayout, {         
       content:      
-      <div style={{backgroundColor:'black',height:'100vh'}}>asdsa</div>      
+      <About />      
     });
   }
 });
+
+FlowRouter.route("/zohoverify/verifyforzoho.html", {
+  action () {
+    mount(MainLayout, {         
+      content:      
+      1467091223139    
+    });
+  }
+});
+
+FlowRouter.notFound = {
+    action: function() {
+ <div>Where Do You Go ?</div>      
+    }
+};
