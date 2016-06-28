@@ -22,14 +22,6 @@ FlowRouter.route("/about", {
   }
 });
 
-FlowRouter.route("/zohoverify/verifyforzoho.html", {
-  action () {
-    mount(MainLayout, {         
-      content:      
-      1467091223139    
-    });
-  }
-});
 
 FlowRouter.notFound = {
     action: function() {
