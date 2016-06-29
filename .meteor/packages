@@ -23,10 +23,10 @@ kadira:flow-router-ssr
 ultimatejs:tracker-react
 #accounts-ui
 accounts-password
-std:accounts-semantic
-semantic:ui-css
 meteortoys:allthings
 
 themeteorchef:bert
 
 kadira:dochead
+std:accounts-material
+materialize:materialize

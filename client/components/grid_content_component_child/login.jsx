@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Accounts } from 'meteor/std:accounts-semantic';
+import { Accounts } from 'meteor/std:accounts-material';
 
 export default class AccountsUIWrapper extends Component {
     render() {

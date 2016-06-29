@@ -5,7 +5,7 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 export default class about extends React.Component {
     render() {
         return (
-             <ReactCSSTransitionGroup
+       <ReactCSSTransitionGroup
                 className="animation-change-view"
                 transitionName="animation-change-view"
                 transitionEnterTimeout={500}
@@ -25,7 +25,7 @@ export default class about extends React.Component {
                     </CardActions>
                 </Card>
             </div>
-             </ReactCSSTransitionGroup>
+            </ReactCSSTransitionGroup>
         );
     }
 }

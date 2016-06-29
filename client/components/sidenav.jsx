@@ -47,7 +47,7 @@ export class sidenav extends React.Component {
 
             <Fixed className="nav-header">
               <Layout type="row" className="docs-logotype md-heading">
-                <Flex>
+                <Fixed>
                   <div id="nav-icon2" className = {nav_icon} onClick={ handleToggle}>
                     <span></span>
                     <span></span>
@@ -56,7 +56,7 @@ export class sidenav extends React.Component {
                     <span></span>
                     <span></span>
                   </div>
-                </Flex>
+                </Fixed>
                 <Flex>
                 </Flex>
                 <Fixed>

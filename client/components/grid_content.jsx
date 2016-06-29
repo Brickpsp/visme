@@ -53,7 +53,7 @@ export default class Grid_content extends React.Component {
                 onResize={ this._preventTextSelect }
                 onResizeStop={ this._preventTextSelect }
                 >
-                <Card shadow={1} key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 8, h: 6, minW: 6, minH: 2 }} style={{ overflow: 'hidden' }}>
+                <Card shadow={1} key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 8, h: 6, minW: 6, minH: 2 }} className='window'>
                     <CardTitle className="mui-appbar" >List Work</CardTitle>
                     <CardActions border style={{ padding: '0px', border: '0px',  overflow: 'auto'}}>
                         <ReactCSSTransitionGroup
@@ -69,13 +69,13 @@ export default class Grid_content extends React.Component {
                         </ReactCSSTransitionGroup>
                     </CardActions>
                 </Card>
-                <Card shadow={1} key="1" _grid={this.state.layouts[1] || { i: "b", x: 8, y: 2, w: 4, h: 2, minW: 3, minH: 2 }} style={{ overflow: 'hidden' }}>
+                <Card shadow={1} key="1" _grid={this.state.layouts[1] || { i: "b", x: 8, y: 2, w: 4, h: 2, minW: 3, minH: 2 }} className='window'>
                     <CardTitle className="mui-appbar" >Add Work</CardTitle>
                     <CardActions border>
                         <Insertwork />
                     </CardActions>
                 </Card>
-                <Card shadow={1} key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 3, minW: 3, minH: 2 }} style={{ overflow: 'hidden' }}>
+                <Card shadow={1} key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 3, minW: 3, minH: 2 }} className='window'>
                     <CardTitle className="mui-appbar" >Login</CardTitle>
                     <CardActions border>
                         <AccountsUIWrapper />

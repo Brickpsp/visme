@@ -43,6 +43,7 @@ launch-screen@1.0.12
 livedata@1.0.18
 localstorage@1.0.11
 logging@1.0.13_1
+materialize:materialize@0.97.6
 meteor@1.1.15_1
 meteor-base@1.0.4
 meteorhacks:fast-render@2.14.0
@@ -87,7 +88,6 @@ reactive-var@1.0.10
 reload@1.1.10
 retry@1.0.8
 routepolicy@1.0.11
-semantic:ui-css@2.1.2
 service-configuration@1.0.10
 session@1.1.6
 sha@1.0.8
@@ -97,8 +97,8 @@ spacebars-compiler@1.0.12
 srp@1.0.9
 standard-minifier-css@1.0.7_1
 standard-minifier-js@1.0.7_1
-std:accounts-semantic@1.1.8
-std:accounts-ui@1.1.20
+std:accounts-material@1.1.0
+std:accounts-ui@1.2.1
 templating@1.1.12_1
 templating-tools@1.0.4
 themeteorchef:bert@2.1.0

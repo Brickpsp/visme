@@ -1,11 +1,16 @@
 html, body {
           font-family: RobotoDraft,Roboto,'Helvetica Neue',sans-serif;
 }
+.window
+{
+   overflow: hidden !important;
+   border-radius: 5px !important;
+}
 .mui-appbar{
         height: 64px;
         background-color:#267ED5 !important;
         cursor: move;
-        color: #fff !important;
+        color: #c6dafc !important;
         flex-shrink: 0;
 }
 
@@ -13,7 +18,7 @@ html, body {
 {
     width: 100% !important;
      height: 100vh;
-    background: url("http://www.hdnicewallpapers.com/Walls/Big/Abstract/Colorful_Abstract_HD_Wallpapers_for_Laptop_Background.jpg") center / cover !important;
+    background: url(/img/default/Colorful_Abstract.jpg) center / cover !important;
     margin: auto;
 }
 .about-action
