@@ -13,6 +13,7 @@ export default class Insertwork extends Component {
                     Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
                 }
                 else {
+                    Bert.alert('You created new work \"' + title + '\"', 'info', 'growl-top-right');
                     this.refs.title.refs.input.value = "";
                     this.refs.description.refs.input.value = "";
                 }

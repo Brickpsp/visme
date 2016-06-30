@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Accounts } from 'meteor/std:accounts-material';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import { Accounts,STATES } from 'meteor/std:accounts-material';
 
-export default class AccountsUIWrapper extends Component {
+export default class AccountsUIWrapper extends TrackerReact(Component) {
     render() {
         Accounts.ui.config({
             passwordSignupFields: 'USERNAME_AND_EMAIL'
@@ -9,7 +10,7 @@ export default class AccountsUIWrapper extends Component {
         // Just render a placeholder container that will be filled in
         return (
             <div>
-                <Accounts.ui.LoginForm />
+                <Accounts.ui.LoginForm/>
             </div>
         );
     }
