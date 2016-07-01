@@ -49,7 +49,7 @@ export default class list extends TrackerReact(Component) {
                     shadow={0}
                     rows={works}
                     rowKeyColumn="_id"
-                    style={{ width: '100%', flexShrink: '0' }}
+                    style={{ width: '100%', flexShrink: '0', boxShadow: 'none' }}
                     >
                     <TableHeader name="title" tooltip="ex1">Title</TableHeader>
                     <TableHeader  name="description" tooltip="ex2">Description</TableHeader>

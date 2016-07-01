@@ -20,7 +20,7 @@ export default class about extends React.Component {
                         <span className='about-text'>
                             thhoang99 @gmail.com
                             <br />
-                            Use React and Meteor
+                            Made by React and Meteor
                         </span>
                     </CardActions>
                 </Card>

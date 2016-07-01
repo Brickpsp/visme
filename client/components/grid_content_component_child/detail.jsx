@@ -67,7 +67,7 @@ export default class detail extends TrackerReact(Component) {
         }
         return (
             <div>
-                <Card shadow={0} style={{ width: '100%', overflow: 'auto' }}>
+                <Card shadow={0} style={{ width: '100%', overflow: 'auto', boxShadow: 'none' }}>
                     <CardTitle style={{ backgroundColor: '#d4d4d5', textTransform: 'capitalize' }}>
                         <Button raised colored ripple style={{ width: '100px', marginLeft: '5px', marginRight: '20px' }} onClick={ handleToggle}>Back</Button>
                         <Button raised accent ripple style={{ width: '100px', marginRight: '15px' }} onClick={this.adddetailwork.bind(this, work) }>Save</Button>

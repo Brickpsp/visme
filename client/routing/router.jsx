@@ -8,7 +8,7 @@ FlowRouter.route("/", {
   action () {
     mount(MainLayout, {           
       content:      
-       <Work/>      
+       <Work/>   
     });
   }
 });
