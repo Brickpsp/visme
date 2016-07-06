@@ -10,7 +10,7 @@ export default class list extends TrackerReact(Component) {
     togglework(data) {
         var complete = !data.complete;
         var title = data.title;
-        Meteor.call("togglework", data, (error, data) => {
+        Meteor.call("togglework", data, (error) => {
             if (error) {
                 Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
             }
@@ -26,7 +26,7 @@ export default class list extends TrackerReact(Component) {
 
     deletework(data) {
         var title = data.title;
-        Meteor.call("deletework", data, (error, data) => {
+        Meteor.call("deletework", data, (error) => {
             if (error) {
                 Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
             }

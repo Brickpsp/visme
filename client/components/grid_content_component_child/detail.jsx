@@ -20,7 +20,7 @@ export default class detail extends TrackerReact(Component) {
     togglework(data) {
         var complete = !data.complete;
         var title = data.title;
-        Meteor.call("togglework", data, (error, data) => {
+        Meteor.call("togglework", data, (error) => {
             if (error) {
                 Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
             }
@@ -38,7 +38,7 @@ export default class detail extends TrackerReact(Component) {
     adddetailwork(data) {
         var detail = this.state.value.toString('html');
         if (detail) {
-            Meteor.call("detailwork", data, detail, (error, data) => {
+            Meteor.call("detailwork", data, detail, (error) => {
                 if (error) {
                     Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
                 }

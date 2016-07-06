@@ -18,7 +18,7 @@ export default class about extends React.Component {
                     <CardTitle expand />
                     <CardActions className='about-action'>
                         <span className='about-text'>
-                            thhoang99 @gmail.com
+                            thhoang99@gmail.com
                             <br />
                             Made by React and Meteor
                         </span>

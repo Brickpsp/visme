@@ -8,7 +8,7 @@ export default class Insertwork extends Component {
         var title = this.refs.title.refs.input.value.trim();
         var description = this.refs.description.refs.input.value.trim();
         if (title && description) {
-            Meteor.call("addwork", title, description, (error, data) => {
+            Meteor.call("addwork", title, description, (error) => {
                 if (error) {
                     Bert.alert('Please Login', 'danger', 'fixed-top', 'fa-frown-o');
                 }
@@ -28,18 +28,16 @@ export default class Insertwork extends Component {
                 <form onSubmit={this.addwork.bind(this) }>
                     <div>
                         <Textfield
+                            label='Title'
                             floatingLabel
-                            required
-                            ref="title"
-                            label="Title"
+                            ref="title"                            
                             /><br />
                         <Textfield
-                            floatingLabel
-                            required
-                            ref="description"
                             label="Description"
+                            floatingLabel
+                            ref="description"                           
                             /><br />
-                        <Button raised colored ripple  style={{ width: '100px' }} type="submit">Add</Button>
+                        <Button raised ripple style={{ width: '100px' }} type="submit">Add</Button>
                     </div>
                 </form>
                 <div>

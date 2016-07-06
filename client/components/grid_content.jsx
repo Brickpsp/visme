@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Card, CardTitle, CardActions } from 'react-mdl';
+import { Card, CardTitle, CardActions, CardMenu, IconButton } from 'react-mdl';
 
 import {Responsive, WidthProvider} from 'react-grid-layout';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
@@ -13,15 +13,24 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 export default class Grid_content extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = { detailwork: false };
-        this.state = { id: {} };
-        try {
-            this.state = { layouts: JSON.parse(JSON.stringify(getFromLS('layouts'))) };
+        super(props);       
+        if (typeof getFromLS('layouts', 'gridMain') === "undefined") {
+            this.state = {
+                layouts: JSON.parse(JSON.stringify({ "layouts": [{ "w": 8, "h": 6, "x": 0, "y": 0, "i": "0", "minW":8, 'minH':6, "moved": false, "static": false }, { "w": 3, "h": 2, "x": 9, "y": 3, "i": "1", 'minW':4, 'minH':3, "moved": false, "static": false }, { "w": 3, "h": 3, "x": 9, "y": 0, "i": "2",'minW':4, 'minH':2, "moved": false, "static": false }] })),
+                detailwork: false,
+                showWindows: [true, true, true],               
+                id: {},
+            }          
         }
-        catch (err) {
-            this.state = { layouts: {} };
-        }
+        else {
+            this.state = {
+                layouts: JSON.parse(JSON.stringify({ "layouts": getFromLS('layouts', 'gridMain') })),
+                detailwork: false,
+                showWindows: [true, true, true],               
+                id: {},
+
+            };
+        }      
     }
 
     _preventTextSelect(a, b, c, d, event) {
@@ -29,7 +38,8 @@ export default class Grid_content extends React.Component {
     };
 
     onLayoutChange(layouts) {
-        saveToLS('layouts', layouts);
+        saveToLS('layouts', layouts, 'gridMain');      
+        this.setState({ layouts: { "layouts": layouts } });    
     }
 
     go_to_detail_work(_id) {
@@ -38,13 +48,47 @@ export default class Grid_content extends React.Component {
     }
 
     go_to_list_work() {
-
         this.setState({ detailwork: false });
     }
 
+
+    fullwindow(layout) {
+        var layouts = this.state.layouts;
+        saveToLS('layout', layout, 'restore');
+        layout.x = 0;
+        layout.y = 0;
+        layout.w = 12;
+        layout.h = 6;
+        layout.static = true;
+        layouts.layouts[parseInt(layout.i)] = layout;
+        var showWindows = this.state.showWindows;
+        for (var i = 0; i < layouts.layouts.length; i++) {
+            if (parseInt(layout.i) != i) {
+                showWindows[i] = false;
+            }
+        }
+        this.setState({ showWindows: showWindows });       
+        this.setState({ layouts: layouts });
+    }
+
+    defaultwindows(layout) {
+        var restore = getFromLS('layout', 'restore');
+        //console.log(getFromLS('layout','restore'));
+        var layouts = this.state.layouts;
+        layouts.layouts[parseInt(layout.i)].w = restore.w;
+        layouts.layouts[parseInt(layout.i)].h = restore.h;
+        layouts.layouts[parseInt(layout.i)].x = restore.x;
+        layouts.layouts[parseInt(layout.i)].y = restore.y;
+        layout.static = false;
+        this.setState({ showWindows: [true, true, true] });      
+        this.setState({ layouts: layouts });
+    }
+
     render() {
+        
         return (
             <ResponsiveReactGridLayout
+                layouts={this.state.layouts}
                 onLayoutChange={this.onLayoutChange.bind(this) }
                 draggableHandle='div.mui-appbar'
                 breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
@@ -52,56 +96,98 @@ export default class Grid_content extends React.Component {
                 onDrag={ this._preventTextSelect }
                 onResize={ this._preventTextSelect }
                 onResizeStop={ this._preventTextSelect }
+                rowHeight={Math.floor(($(window).height() - 70) / 6)}               
                 >
-                <Card shadow={1} key="0" _grid={this.state.layouts[0] || { i: "a", x: 0, y: 0, w: 8, h: 6, minW: 6, minH: 2 }} className='window'>
-                    <CardTitle className="mui-appbar" >List Work</CardTitle>
-                    <CardActions border style={{ padding: '0px', border: '0px',  overflow: 'auto'}}>
-                        <ReactCSSTransitionGroup
-                            transitionName = "change_list"
-                            transitionEnterTimeout = {600}
-                            transitionLeaveTimeout = {600}>
-                            {
-                                this.state.detailwork ?
-                                    <DetailWork  key="01"  id={this.state.id} callback={this.go_to_list_work.bind(this) }/>
-                                    :
-                                    <ListWork  key="02" callback={this.go_to_detail_work.bind(this) }/>
-                            }
-                        </ReactCSSTransitionGroup>
-                    </CardActions>
-                </Card>
-                <Card shadow={1} key="1" _grid={this.state.layouts[1] || { i: "b", x: 8, y: 2, w: 4, h: 2, minW: 3, minH: 2 }} className='window'>
-                    <CardTitle className="mui-appbar" >Add Work</CardTitle>
-                    <CardActions border>
-                        <Insertwork />
-                    </CardActions>
-                </Card>
-                <Card shadow={1} key="2" _grid={this.state.layouts[2] || { i: "c", x: 8, y: 0, w: 4, h: 3, minW: 3, minH: 2 }} className='window'>
-                    <CardTitle className="mui-appbar" >Login</CardTitle>
-                    <CardActions border>
-                        <AccountsUIWrapper />
-                    </CardActions>
-                </Card>
-            </ResponsiveReactGridLayout>
+                {
+                    this.state.showWindows[0] ?
+                        <Card shadow={1} key={'0'} _grid={this.state.layouts.layouts[0] || { x: 0, y: 0, w: 8, h: 6, minW: 8, minH: 6 }} className='window'>
+                            <CardTitle className="mui-appbar" >List Work</CardTitle>
+                            <CardMenu >
+                                {
+                                    this.state.showWindows[1] ?
+                                        <IconButton onClick={this.fullwindow.bind(this, this.state.layouts.layouts[0]) } style={{ color: '#fff' }} name="crop_din" />
+                                        :
+                                        <IconButton onClick={this.defaultwindows.bind(this, this.state.layouts.layouts[0]) } style={{ color: '#fff' }} name="tab" />
+                                }
+                            </CardMenu>
+                            <CardActions border style={{ padding: '0px', border: '0px', overflow: 'auto' }}>
+                                <ReactCSSTransitionGroup
+                                    transitionName = "change_list"
+                                    transitionEnterTimeout = {600}
+                                    transitionLeaveTimeout = {600}>
+                                    {
+                                        this.state.detailwork ?
+                                            <DetailWork  key="01"  id={this.state.id} callback={this.go_to_list_work.bind(this) }/>
+                                            :
+                                            <ListWork  key="02" callback={this.go_to_detail_work.bind(this) }/>
+                                    }
+                                </ReactCSSTransitionGroup>
+                            </CardActions>
 
+                        </Card>
+                        :
+                        <div  key={'0'}  style={{ display: 'none' }}/>
+                }
+                {
+                    this.state.showWindows[1] ?
+                        <Card shadow={1} key={'1'} _grid={this.state.layouts.layouts[1] || { x: 8, y: 2, w: 4, h: 2, minW: 4, minH: 2 }} className='window'>
+                            <CardTitle className="mui-appbar" >Add Work</CardTitle>
+                            <CardMenu >
+                                {
+                                    this.state.showWindows[2] ?
+                                        <IconButton onClick={this.fullwindow.bind(this, this.state.layouts.layouts[1]) } style={{ color: '#fff' }} name="crop_din" />
+                                        :
+                                        <IconButton onClick={this.defaultwindows.bind(this, this.state.layouts.layouts[1]) } style={{ color: '#fff' }} name="tab" />
+                                }
+                            </CardMenu>
+                            <CardActions border>
+                                <Insertwork />
+                            </CardActions>
+                        </Card>
+                        :
+                        <div  key={'1'} style={{ display: 'none' }}/>
+                }
+                {
+                    this.state.showWindows[2] ?
+                        <Card shadow={1} key={'2'} _grid={this.state.layouts.layouts[2] || { x: 8, y: 0, w: 4, h: 3, minW: 4, minH: 3 }}  className='window'>
+                            <CardTitle className="mui-appbar" >Login</CardTitle>
+                            <CardMenu >
+                                {
+                                    this.state.showWindows[0] ?
+                                        <IconButton onClick={this.fullwindow.bind(this, this.state.layouts.layouts[2]) } style={{ color: '#fff' }} name="crop_din" />
+                                        :
+                                        <IconButton onClick={this.defaultwindows.bind(this, this.state.layouts.layouts[2]) } style={{ color: '#fff' }} name="tab" />
+                                }
+                            </CardMenu>
+                            <CardActions border>
+                                <AccountsUIWrapper />
+                            </CardActions>
+                        </Card>
+                        :
+                        <div  key={'2'} style={{ display: 'none' }}/>
+                }
+
+            </ResponsiveReactGridLayout>
         );
     }
 }
 
 
-function getFromLS(key) {
+function getFromLS(key, container) {
     let ls = {};
     if (global.localStorage) {
         try {
-            ls = JSON.parse(global.localStorage.getItem('rgl-8')) || {};
+            ls = JSON.parse(global.localStorage.getItem(container)) || {};
         } catch (e) {/*Ignore*/ }
     }
     return ls[key];
 }
 
-function saveToLS(key, value) {
+function saveToLS(key, value, container) {
     if (global.localStorage) {
-        global.localStorage.setItem('rgl-8', JSON.stringify({
+        global.localStorage.setItem(container, JSON.stringify({
             [key]: value
         }));
     }
 }
+

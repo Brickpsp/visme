@@ -5,6 +5,7 @@ html, body {
 {
    overflow: hidden !important;
    border-radius: 5px !important;
+   
 }
 .mui-appbar{
         height: 64px;
@@ -50,6 +51,7 @@ background-color: rgba(0, 0, 0, 0.4) !important;
 }
 .react-grid-item.resizing {
     z-index: 1;
+    transition: all 200ms ease;
 }
 .react-grid-item.react-draggable-dragging {
     transition: none;
