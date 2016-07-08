@@ -177,7 +177,7 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
                                                         <Textfield
                                                             label="Repeat password"
                                                             floatingLabel
-                                                            type="repassword"
+                                                            type="password"
                                                             ref="repassword_su"
                                                             onChange={this.validateSignup.bind(this) }
                                                             /><br />
@@ -198,7 +198,8 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
                             })() }
                         </div>
                 }
-                <h5 style={{ fontFamily: "Helvetica", color: 'white', backgroundColor: 'red', borderRadius: '5px', textIndent: '10px' }}>{this.state.error}</h5>
+                <h5 style={{ fontFamily: "Helvetica", color: 'white', backgroundColor: 'red', borderRadius: '5px', height: '30px',
+textAlign: 'center'}}>{this.state.error}</h5>
             </div>
 
         );
