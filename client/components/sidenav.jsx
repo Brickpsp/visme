@@ -33,14 +33,14 @@ export class sidenav extends React.Component {
 
 
     return (
- <ReactCSSTransitionGroup               
-                transitionName="sidenav-begin"
-                transitionEnterTimeout={800}
-                transitionLeaveTimeout={800}
-                transitionAppearTimeout={800}
-                transitionAppear={true}
-                >
-      
+      <ReactCSSTransitionGroup
+        transitionName="sidenav-begin"
+        transitionEnterTimeout={800}
+        transitionLeaveTimeout={800}
+        transitionAppearTimeout={800}
+        transitionAppear={true}
+        >
+
         <div className="site-sidenav-collapse md-sidenav-left md-whiteframe-z2 helvetica" style={this.state.open_drawer}>
           <CanvasComponent/>
           <Layout type="column">
@@ -72,46 +72,45 @@ export class sidenav extends React.Component {
               </Layout>
             </Fixed>
             <Flex className="content">
-              <ReactCSSTransitionGroup  transitionName="docs-menu" transitionEnterTimeout={500} transitionLeaveTimeout={200}>
-                  
+              <ReactCSSTransitionGroup  transitionName="docs-menu" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
                 {
                   this.state.open ?
-                  <ul className="docs-menu">
-                    <li><Button className="button" ripple href="/">HOME</Button></li>               
-                    <li><Button className="button" ripple href="/about">About</Button></li>                  
-                      </ul>
+                    <ul className="docs-menu">
+                      <li><Button className="button" ripple href="/">HOME</Button></li>
+                      <li><Button className="button" ripple href="/about">About</Button></li>
+                    </ul>
                     :
                     null
                 }
-             </ReactCSSTransitionGroup>
+              </ReactCSSTransitionGroup>
             </Flex>
             <Fixed>
               <footer className="sidenav-footer">
                 <Layout type="column">
                   <Flex>
-                   
-                      <Layout type="column" className="social-icon">
-                        <Fixed style={{height:'30px'}}>
-                          <a href="https://www.facebook.com/"><img src="/img/default/f.png"/></a>
-                        </Fixed>
-                        <Fixed style={{height:'30px'}}>
-                          <a href="https://twitter.com/"><img src="/img/default/t.png"/></a>
-                        </Fixed>
-                        <Fixed style={{height:'30px'}}>
-                          <a href="https://plus.google.com/"><img src="/img/default/g.png"/></a>
-                        </Fixed>
-                      </Layout>
-                   
+
+                    <Layout type="column" className="social-icon">
+                      <Fixed style={{ height: '30px' }}>
+                        <a href="https://www.facebook.com/"><img src="/img/default/f.png"/></a>
+                      </Fixed>
+                      <Fixed style={{ height: '30px' }}>
+                        <a href="https://twitter.com/"><img src="/img/default/t.png"/></a>
+                      </Fixed>
+                      <Fixed style={{ height: '30px' }}>
+                        <a href="https://plus.google.com/"><img src="/img/default/g.png"/></a>
+                      </Fixed>
+                    </Layout>
+
                   </Flex>
                   <Fixed>
-                   <ReactCSSTransitionGroup  transitionName="footer_hide" transitionEnterTimeout={200} transitionLeaveTimeout={500}>
-              
-                   {
-                      this.state.open ?
-                        <div>This is footer</div>
-                        :
-                        null
-                    }
+                    <ReactCSSTransitionGroup  transitionName="footer_hide" transitionEnterTimeout={200} transitionLeaveTimeout={500}>
+
+                      {
+                        this.state.open ?
+                          <div>This is footer</div>
+                          :
+                          null
+                      }
                     </ReactCSSTransitionGroup>
                   </Fixed>
                 </Layout>
@@ -123,10 +122,10 @@ export class sidenav extends React.Component {
       </ReactCSSTransitionGroup>
     );
   }
-handleClickOutside(event) {
-       this.setState({ open: false });
-       this.setState({ open_drawer: {} });
-    }
+  handleClickOutside(event) {
+    this.setState({ open: false });
+    this.setState({ open_drawer: {} });
+  }
 }
 
 export default onClickOutside(sidenav);

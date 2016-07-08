@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import RichTextEditor from 'react-rte';
 import NoSSR from 'react-no-ssr';
-import { Button, Checkbox, Card, CardTitle, CardActions } from 'react-mdl';
+import { Button, Checkbox, Card, CardTitle, CardActions, ProgressBar } from 'react-mdl';
 
 export default class detail extends TrackerReact(Component) {
     constructor(props) {

@@ -259,8 +259,8 @@ code:not(.highlight) {
     margin: 0;
     /*padding-top: 20px;*/
     
-    -webkit-transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all;
-    transition: .2s cubic-bezier(0.4, 0, 0.2, 1) all;
+    -webkit-transition: .5s cubic-bezier(0.4, 0, 0.2, 1) all;
+    transition: .5s cubic-bezier(0.4, 0, 0.2, 1) all;
     overflow: hidden;
     color: white;
 }

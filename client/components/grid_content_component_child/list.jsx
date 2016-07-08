@@ -3,6 +3,10 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { DataTable, TableHeader, Checkbox, IconButton } from 'react-mdl';
 
 export default class list extends TrackerReact(Component) {
+    constructor(props) {
+        super(props);
+    }
+
     work_data() {
         return work.find().fetch();
     }
@@ -40,9 +44,6 @@ export default class list extends TrackerReact(Component) {
 
     render() {
         var works = this.work_data();
-
-        var element = {};
-
         return (
             <div>
                 <DataTable

@@ -11,13 +11,13 @@ export default class Work extends React.Component {
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
 
+     
     componentDidMount() {
         this.state = {
             subscription: {
                 work: Meteor.subscribe("userData"),
             },
         }
-
     }
 
     componentWillUnmount() {
