@@ -96,7 +96,7 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
 
     validateSignup() {
         this.setState({ error: '' })
-        if (this.refs.repassword_su.refs.input.value.trim().length == this.refs.password_su.refs.input.value.trim().length) {
+        if (this.refs.repassword_su.refs.input.value.trim().length >= this.refs.password_su.refs.input.value.trim().length) {
             if (this.refs.repassword_su.refs.input.value.trim() == this.refs.password_su.refs.input.value.trim()) {
                 this.setState({ repeatpass: true })
             }
@@ -198,8 +198,7 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
                             })() }
                         </div>
                 }
-                <h5 style={{ fontFamily: "Helvetica", color: 'white', backgroundColor: 'red', borderRadius: '5px', height: '30px',
-textAlign: 'center'}}>{this.state.error}</h5>
+                <h5 style={{ fontFamily: "Helvetica", color: 'white', backgroundColor: 'red', borderRadius: '5px',textAlign: 'center'}}>{this.state.error}</h5>
             </div>
 
         );
