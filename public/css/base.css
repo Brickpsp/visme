@@ -7,6 +7,16 @@ html, body {
    border-radius: 5px !important;
    
 }
+.text-title
+{    
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 300;
+    font-stretch: normal;
+    font-size: 24px;
+    line-height: 32px;
+    font-family: Roboto, sans-serif;
+}
 .mui-appbar{
         height: 64px;
         background-color:#267ED5 !important;

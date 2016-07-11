@@ -8,7 +8,13 @@ export default class list extends TrackerReact(Component) {
     }
 
     work_data() {
-        return work.find().fetch();
+        var works = work.find().fetch();
+        this.setState({ works: works });
+        return this.state.works;
+    }
+
+    componentWillMount() {
+        this.setState({ works: work.find().fetch() });
     }
 
     togglework(data) {
@@ -38,14 +44,18 @@ export default class list extends TrackerReact(Component) {
         });
     }
 
-    go_to_work(id) {
-        this.props.callback(id);
+    go_to_detail_work(id) {
+        this.props.callback(id, 'edit');
+    }
+
+    go_to_view_work(id) {
+ this.props.callback(id, 'view');
     }
 
     render() {
-        var works = this.work_data();
+        var works = this.state.works;
         return (
-            <div>
+            <div>            
                 <DataTable
                     shadow={0}
                     rows={works}
@@ -58,11 +68,12 @@ export default class list extends TrackerReact(Component) {
                     <TableHeader  name="CreateAT" cellFormatter={(CreateAT) => CreateAT.toLocaleDateString() } tooltip="ex4">Date Created</TableHeader>
                     <TableHeader name="command" cellFormatter={(Command, work) =>
                         <div>
+                            <IconButton name="visibility" colored onClick={this.go_to_view_work.bind(this, work._id) }/>
+                            <IconButton name="create" colored onClick={this.go_to_detail_work.bind(this, work._id) }/>
                             <IconButton name="delete" onClick={this.deletework.bind(this, work) } style={{ marginRight: '10px' }}/>
-                            <IconButton name="create" colored onClick={this.go_to_work.bind(this, work._id) }/>
                         </div>
                     }  tooltip="ex5">Command</TableHeader>
-                </DataTable>
+                </DataTable>                                 
             </div>
         );
 

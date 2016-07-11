@@ -45,7 +45,8 @@ export default class Grid_content extends TrackerReact(React.Component) {
         this.setState({ layouts: { "layouts": layouts } });
     }
 
-    go_to_detail_work(_id) {
+    go_to_detail_work(_id, status) {
+        this.setState({ listStatus : status});
         this.setState({ id: _id });
         this.setState({ detailwork: true });
     }
@@ -128,7 +129,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                             >
                                             {
                                                 this.state.detailwork ?
-                                                    <DetailWork  key="01" id={this.state.id} callback={this.go_to_list_work.bind(this) }/>
+                                                    <DetailWork  key="01" id={this.state.id} status={this.state.listStatus} callback={this.go_to_list_work.bind(this) }/>
                                                     :
                                                     <ListWork  key="02" callback={this.go_to_detail_work.bind(this) }/>
                                             }
@@ -156,7 +157,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                         <IconButton onClick={this.defaultwindows.bind(this, this.state.layouts.layouts[1]) } style={{ color: '#fff' }} name="tab" />
                                 }
                             </CardMenu>
-                            <CardActions border>
+                            <CardActions border style={{overflow: 'auto' }}>
                                 <Insertwork />
                             </CardActions>
                         </Card>
@@ -175,7 +176,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                         <IconButton onClick={this.defaultwindows.bind(this, this.state.layouts.layouts[2]) } style={{ color: '#fff' }} name="tab" />
                                 }
                             </CardMenu>
-                            <CardActions border>
+                            <CardActions border style={{overflow: 'auto' }}>
                                 <AccountsUIWrapper />
                             </CardActions>
                         </Card>

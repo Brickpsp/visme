@@ -1,4 +1,5 @@
 import React from 'react';
+//Perf = require('react-addons-perf');
 import Sidenav from '/client/components/sidenav.jsx';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
 

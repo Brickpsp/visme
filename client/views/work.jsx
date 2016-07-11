@@ -2,7 +2,6 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import GridCnt from '/client/components/grid_content.jsx';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-
 work = new Mongo.Collection('work');
 
 export default class Work extends React.Component {
@@ -10,8 +9,8 @@ export default class Work extends React.Component {
         super();
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
+  
 
-     
     componentDidMount() {
         this.state = {
             subscription: {
@@ -25,6 +24,7 @@ export default class Work extends React.Component {
     }
 
     render() {
+
         return (
             <ReactCSSTransitionGroup
                 className="animation-change-view"
@@ -33,7 +33,7 @@ export default class Work extends React.Component {
                 transitionLeaveTimeout={500}
                 transitionAppearTimeout={800}
                 transitionAppear={true}
-                > 
+                >
                 <GridCnt key='G'/>
             </ReactCSSTransitionGroup>
         );
