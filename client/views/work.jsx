@@ -8,14 +8,10 @@ export default class Work extends React.Component {
     constructor() {
         super();
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    }
-  
-
-    componentDidMount() {
         this.state = {
             subscription: {
-                work: Meteor.subscribe("userData"),
-            },
+                work: Meteor.subscribe("userData")
+            },            
         }
     }
 
@@ -23,8 +19,8 @@ export default class Work extends React.Component {
         this.state.subscription.work.stop();
     }
 
-    render() {
 
+    render() {
         return (
             <ReactCSSTransitionGroup
                 className="animation-change-view"
@@ -34,8 +30,13 @@ export default class Work extends React.Component {
                 transitionAppearTimeout={800}
                 transitionAppear={true}
                 >
+              
                 <GridCnt key='G'/>
+               
             </ReactCSSTransitionGroup>
         );
     }
+
+    
+ 
 }

@@ -24,7 +24,11 @@ html, body {
         color: #c6dafc !important;
         flex-shrink: 0;
 }
-
+.mui-appbar-fullwindow{       
+        background-color:#267ED5 !important;        
+        color: #c6dafc !important;
+        flex-shrink: 0;
+}
 .about-head
 {
     width: 100% !important;

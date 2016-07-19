@@ -12,8 +12,8 @@ export default class detail extends TrackerReact(Component) {
     }
 
 
-    componentWillMount() {
-        this.setState({ work: work.findOne(this.props.id) });
+     work_data() {           
+        return work.findOne(this.props.id);  
     }
 
     togglework(data) {
@@ -51,7 +51,7 @@ export default class detail extends TrackerReact(Component) {
     };
 
     render() {
-        var work = this.state.work;
+        var work =  this.work_data();
 
         handleToggle = () => {
             this.props.callback();

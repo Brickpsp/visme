@@ -5,17 +5,15 @@ import { DataTable, TableHeader, Checkbox, IconButton } from 'react-mdl';
 export default class list extends TrackerReact(Component) {
     constructor(props) {
         super(props);
+        this.state = { works: work.find().fetch() };
     }
 
-    work_data() {
-        var works = work.find().fetch();
-        this.setState({ works: works });
-        return this.state.works;
+    works_data() {
+        var works = work.find().fetch();        
+        return works;
     }
 
-    componentWillMount() {
-        this.setState({ works: work.find().fetch() });
-    }
+
 
     togglework(data) {
         var complete = !data.complete;
@@ -49,13 +47,14 @@ export default class list extends TrackerReact(Component) {
     }
 
     go_to_view_work(id) {
- this.props.callback(id, 'view');
+        this.props.callback(id, 'view');
     }
 
     render() {
-        var works = this.state.works;
+        //console.log(work.find().fetch());
+        var works =this.works_data();
         return (
-            <div>            
+            <div>
                 <DataTable
                     shadow={0}
                     rows={works}
@@ -73,7 +72,7 @@ export default class list extends TrackerReact(Component) {
                             <IconButton name="delete" onClick={this.deletework.bind(this, work) } style={{ marginRight: '10px' }}/>
                         </div>
                     }  tooltip="ex5">Command</TableHeader>
-                </DataTable>                                 
+                </DataTable>
             </div>
         );
 

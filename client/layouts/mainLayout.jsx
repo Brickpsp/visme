@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'is_js';
 //Perf = require('react-addons-perf');
 import Sidenav from '/client/components/sidenav.jsx';
 import {Layout, Flex, Fixed} from 'react-layout-pane';
@@ -13,8 +14,11 @@ import '/node_modules/react-mdl/extra/material.js';
 DocHead.setTitle('BuildTest');
 export const MainLayout = ({content}) => (  
   <div>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+  {
+    (is.desktop()) ?
+ 
     <Layout type="row">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
       <Fixed>
         <Sidenav/>
       </Fixed>
@@ -22,5 +26,8 @@ export const MainLayout = ({content}) => (
         <div style={{width:'calc(100vw - 80px)'}}>{content}</div>         
       </Flex>
     </Layout>
+    :
+    <div>this is for phone</div>
+  }
  </div>
 );
