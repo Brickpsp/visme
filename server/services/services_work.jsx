@@ -9,9 +9,10 @@ Meteor.methods({
             title: title,
             description: description,
             detail:'',            
-            complete: false,
+            public_work: false,
             CreateAT: new Date(),
             user: Meteor.userId(),
+            username : Meteor.user().username,
         });
     },
     detailwork(data, text) {
@@ -27,7 +28,7 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
         work.update(data._id, {
-            $set: { complete: !data.complete }
+            $set: { public_work: !data.public_work }
         });
     },
     deletework(data) {
@@ -44,5 +45,5 @@ Meteor.publish("allData", function () {
 });
 
 Meteor.publish("userData", function () {
-    return work.find({ user: this.userId });
+    return work.find({$or:[{user: this.userId, public_work:false},{public_work : true}]});
 });

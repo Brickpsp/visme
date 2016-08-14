@@ -10,24 +10,29 @@ import '/public/css/base.css';
 
 import '/node_modules/react-mdl/extra/material.css';
 import '/node_modules/react-mdl/extra/material.js';
+import '/public/dist/alloy-editor/assets/alloy-editor-ocean-min.css';
+
 
 DocHead.setTitle('BuildTest');
-export const MainLayout = ({content}) => (  
+
+export const MainLayout = ({content}) => (
   <div>
-  {
-    (is.desktop()) ?
- 
-    <Layout type="row">
-     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-      <Fixed>
-        <Sidenav/>
-      </Fixed>
-      <Flex style={{overflowX:'hidden', height:'100vh'}}>             
-        <div style={{width:'calc(100vw - 80px)'}}>{content}</div>         
-      </Flex>
-    </Layout>
-    :
-    <div>this is for phone</div>
-  }
- </div>
+
+    <div>
+      {
+        (is.desktop()) ?
+          <Layout type="row">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+            <Fixed>
+              <Sidenav/>
+            </Fixed>
+            <Flex style={{ overflowX: 'hidden', height: '100vh' }}>
+              <div style={{ width: 'calc(100vw - 80px)' }}>{content}</div>
+            </Flex>
+          </Layout>
+          :
+          <div>this is for phone</div>
+      }
+    </div>
+  </div>
 );

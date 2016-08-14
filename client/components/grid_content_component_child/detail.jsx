@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import RichTextEditor from 'react-rte';
+
+import AlloyEditorComponent from './alloyeditor.js';
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
 import { Button, Checkbox, Card, CardTitle, CardActions, ProgressBar } from 'react-mdl';
 
@@ -8,12 +9,12 @@ export default class detail extends TrackerReact(Component) {
     constructor(props) {
         super(props);
         this.state = { work: work.findOne(this.props.id) };
-        this.state = { value: RichTextEditor.createValueFromString(this.state.work.detail, 'html') }
+        this.state = { value: this.state.work.detail };
     }
 
 
-     work_data() {           
-        return work.findOne(this.props.id);  
+    work_data() {
+        return work.findOne(this.props.id);
     }
 
     togglework(data) {
@@ -35,7 +36,7 @@ export default class detail extends TrackerReact(Component) {
 
 
     adddetailwork(data) {
-        var detail = this.state.value.toString('html');
+        var detail = CKEDITOR.instances['editable'].getData();
         if (detail) {
             Meteor.call("detailwork", data, detail, (error) => {
                 if (error) {
@@ -46,12 +47,9 @@ export default class detail extends TrackerReact(Component) {
         }
     }
 
-    onChange(value) {
-        this.setState({ value });
-    };
-
     render() {
-        var work =  this.work_data();
+        var work = this.work_data();
+        //console.log(Meteor.user());
 
         handleToggle = () => {
             this.props.callback();
@@ -67,33 +65,34 @@ export default class detail extends TrackerReact(Component) {
         }
         return (
             <div>
+
                 {(() => {
                     switch (this.props.status) {
                         case "edit":
                             return (
                                 <Card shadow={0} style={{ width: '100%', overflow: 'auto', boxShadow: 'none' }}>
                                     <CardTitle style={{ backgroundColor: '#d4d4d5', textTransform: 'capitalize' }}>
-                                        <Button raised colored ripple style={{ width: '100px', marginLeft: '5px', marginRight: '20px' }} onClick={handleToggle}>Back</Button>
+                                        <Button raised colored ripple style={{ width: '100px', marginLeft: '5px', marginRight: '20px' }} onClick={handleToggle.bind(this) }>Back</Button>
                                         <Button raised accent ripple style={{ width: '100px', marginRight: '15px' }} onClick={this.adddetailwork.bind(this, work) }>Save</Button>
                                         <div style={{ borderLeft: '1px solid #000', height: '30px', marginRight: '15px' }}></div>
                                         <div style={{ fontSize: '24px', fontWeight: '300', color: 'white' }}>{work.title}</div>
+                                        <div style={{ borderLeft: '1px solid #000', height: '30px', marginRight: '15px', marginLeft: '15px' }}></div>
+                                        <div style={{ fontSize: '24px', fontWeight: '300', color: 'white' }}>Owner: {work.username}</div>
                                         <div style={{ width: '100px', overflow: 'hidden', right: '0px', position: 'absolute', paddingTop: '8px' }}>
                                             <Checkbox ripple
-                                                label="Done"
+                                                label="Public"
                                                 onChange={this.togglework.bind(this, work) }
                                                 checked={work.complete}
                                                 />
+
                                         </div>
                                     </CardTitle>
-                                    <CardActions>
-                                       { canUseDOM ?
-                                            <RichTextEditor
-                                                value={this.state.value}
-                                                onChange={this.onChange.bind(this) }
-                                                />
-                                                :
-                                                null
-                                       }
+                                    <CardActions style={{ overflowX: 'hidden', padding: '20px' }}>
+                                        { canUseDOM ?
+                                            <AlloyEditorComponent edit={true} text={this.state.value} container= 'editable'/>
+                                            :
+                                            null
+                                        }
                                     </CardActions>
                                 </Card>
                             )
@@ -103,25 +102,19 @@ export default class detail extends TrackerReact(Component) {
                                     <CardTitle style={{ backgroundColor: '#d4d4d5', textTransform: 'capitalize' }}>
                                         <Button raised colored ripple style={{ width: '100px', marginLeft: '5px', marginRight: '20px' }} onClick={handleToggle}>Back</Button>
                                         <div style={{ borderLeft: '1px solid #000', height: '30px', marginRight: '15px' }}></div>
-                                        <div style={{ fontSize: '24px', fontWeight: '300', color: 'white' }}>{work.title} (Read Only)</div>
+                                        <div style={{ fontSize: '24px', fontWeight: '300', color: 'white' }}>{work.title} (Read Only) </div>
+                                        <div style={{ borderLeft: '1px solid #000', height: '30px', marginRight: '15px', marginLeft: '15px' }}></div>
+                                        <div style={{ fontSize: '24px', fontWeight: '300', color: 'white' }}>Owner: {work.username}</div>
                                         <div style={{ width: '100px', overflow: 'hidden', right: '0px', position: 'absolute', paddingTop: '8px' }}>
-                                            <Checkbox ripple
-                                                label="Done"
-                                                onChange={this.togglework.bind(this, work) }
-                                                checked={work.complete}
-                                                />
+
                                         </div>
                                     </CardTitle>
-                                    <CardActions>                                  
-                                          { canUseDOM ?
-                                            <RichTextEditor
-                                                value={this.state.value}
-                                                readOnly={true}
-                                                onChange={this.onChange.bind(this) }
-                                                />
-                                                :
-                                                null
-                                       }
+                                    <CardActions style={{ overflowX: 'hidden', padding: '20px' }}>
+                                        { canUseDOM ?
+                                            <AlloyEditorComponent edit={false} text={this.state.value} container= 'editable'/>
+                                            :
+                                            null
+                                        }
                                     </CardActions>
                                 </Card>
 
@@ -137,3 +130,4 @@ export default class detail extends TrackerReact(Component) {
 
     }
 }
+

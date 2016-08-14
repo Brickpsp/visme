@@ -85,3 +85,6 @@ background-color: rgba(0, 0, 0, 0.4) !important;
     box-sizing: border-box;
     cursor: se-resize;
 }
+.cke_textarea_inline {
+    overflow: hidden !important;
+}

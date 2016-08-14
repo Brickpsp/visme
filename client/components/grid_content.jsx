@@ -34,6 +34,12 @@ export default class Grid_content extends TrackerReact(React.Component) {
         }
     }
 
+
+    componentDidMount() {
+        window.ALLOYEDITOR_BASEPATH = "/dist/alloy-editor/";
+        CKEDITOR.basePath = "/dist/alloy-editor/";
+    }
+
     _preventTextSelect(a, b, c, d, event) {
         event.preventDefault();
     };
@@ -69,7 +75,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
             transitionLeaveTimeout = {600}
             >
             {
-                (Meteor.user()) ?
+                //(Meteor.user()) ?
                     <ReactCSSTransitionGroup
                         transitionName = "change_list"
                         transitionEnterTimeout = {600}
@@ -82,15 +88,15 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                 <ListWork  key="02" callback={this.go_to_detail_work.bind(this) }/>
                         }
                     </ReactCSSTransitionGroup>
-                    :
-                    null
+                    //:
+                    //null
             }
         </ReactCSSTransitionGroup>;
-        return (            
+        return (
             <div>
                 {
                     this.state.full ?
-                        <Card shadow={1} style={{ width: '100%', height: '100vh'}}>
+                        <Card shadow={1} style={{ width: '100%', height: '100vh' }}>
                             <CardTitle className="mui-appbar-fullwindow">{this.state.brandContent}</CardTitle>
                             <CardMenu >
                                 <IconButton onClick={this.defaultwindows.bind(this) } style={{ color: '#fff' }} name="tab" />
@@ -101,9 +107,9 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                         case "List Work":
                                             return contentlist;
                                         case "Add Work":
-                                            return <div style={{ padding: '10px'}}><Insertwork /></div>;
+                                            return <div style={{ padding: '10px' }}><Insertwork /></div>;
                                         case "Login":
-                                            return <div style={{ padding: '10px'}}><AccountsUIWrapper /></div>;
+                                            return <div style={{ padding: '10px' }}><AccountsUIWrapper /></div>;
                                     }
                                 })() }
                             </CardActions>
@@ -121,7 +127,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                             rowHeight={Math.floor(($(window).height() - 70) / 6) }
                             >
 
-                            <Card shadow={1} key={'0'} _grid={this.state.layouts.layouts[0] || { x: 0, y: 0, w: 8, h: 6, minW: 4, minH: 2 }} className='window'>
+                            <Card shadow={1} key={'0'} data-grid={this.state.layouts.layouts[0] || { x: 0, y: 0, w: 8, h: 6, minW: 4, minH: 2 }} className='window'>
                                 <CardTitle className="mui-appbar" >List Work</CardTitle>
                                 <CardMenu >
                                     <IconButton onClick={this.fullwindow.bind(this, "List Work") } style={{ color: '#fff' }} name="crop_din" />
@@ -131,7 +137,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                 </CardActions>
                             </Card>
 
-                            <Card shadow={1} key={'1'} _grid={this.state.layouts.layouts[1] || { x: 8, y: 2, w: 4, h: 2, minW: 3, minH: 2 }} className='window'>
+                            <Card shadow={1} key={'1'} data-grid={this.state.layouts.layouts[1] || { x: 8, y: 2, w: 4, h: 2, minW: 3, minH: 2 }} className='window'>
                                 <CardTitle className="mui-appbar" >Add Work</CardTitle>
                                 <CardMenu >
                                     <IconButton onClick={this.fullwindow.bind(this, "Add Work") } style={{ color: '#fff' }} name="crop_din" />
@@ -141,7 +147,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                 </CardActions>
                             </Card>
 
-                            <Card shadow={1} key={'2'} _grid={this.state.layouts.layouts[2] || { x: 8, y: 0, w: 4, h: 3, minW: 3, minH: 3 }}  className='window'>
+                            <Card shadow={1} key={'2'} data-grid={this.state.layouts.layouts[2] || { x: 8, y: 0, w: 4, h: 3, minW: 3, minH: 3 }}  className='window'>
                                 <CardTitle className="mui-appbar" >Login</CardTitle>
                                 <CardMenu >
                                     <IconButton onClick={this.fullwindow.bind(this, "Login") } style={{ color: '#fff' }} name="crop_din" />
