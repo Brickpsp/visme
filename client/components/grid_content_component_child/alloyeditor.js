@@ -41,10 +41,10 @@ var AlloyEditorComponent = React.createClass({
 
     render: function () {
         var value = this.props.text;
-
+	console.log(this);
 
         return (
-            <textarea ref="alloyeditor" style={{ overflow: 'hidden' }} id={this.props.container} defaultValue= {value} />
+		<textarea ref="alloyeditor" style={{ overflow: 'hidden' }} id={this.props.container} defaultValue= {value} />
 
         );
     }

@@ -1,14 +1,15 @@
 accounts-base@1.2.14
 accounts-facebook@1.0.11
 accounts-oauth@1.1.15
-accounts-password@1.3.2
+accounts-password@1.3.3
 allow-deny@1.0.5
 autoupdate@1.3.12
 babel-compiler@6.13.0
-babel-runtime@1.0.0
+babel-runtime@1.0.1
 base64@1.0.10
 binary-heap@1.0.10
 blaze@2.2.0
+blaze-html-templates@1.0.5
 blaze-tools@1.0.10
 boilerplate-generator@1.0.11
 caching-compiler@1.1.9
@@ -23,7 +24,7 @@ ddp-rate-limiter@1.0.6
 ddp-server@1.3.12
 deps@1.0.12
 diff-sequence@1.0.7
-ecmascript@0.6.0
+ecmascript@0.6.1
 ecmascript-runtime@0.3.15
 ejson@1.0.13
 email@1.1.18
@@ -89,6 +90,7 @@ random@1.0.10
 rate-limit@1.0.6
 reactive-dict@1.1.8
 reactive-var@1.0.11
+redaty:admin-lte@0.0.5
 reload@1.1.11
 retry@1.0.9
 routepolicy@1.0.12
@@ -107,6 +109,7 @@ templating-runtime@1.2.15
 templating-tools@1.0.5
 themeteorchef:bert@2.1.1
 tracker@1.1.1
+twbs:bootstrap@3.3.6
 ui@1.0.12
 ultimatejs:tracker-react@1.0.5
 underscore@1.0.10

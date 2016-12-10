@@ -15,8 +15,8 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
 
     loginuser(event) {
         event.preventDefault();
-        var user = this.refs.username.refs.input.value.trim();
-        var pass = this.refs.password.refs.input.value.trim();
+        var user = this.refs.username.inputRef.value.trim();
+        var pass = this.refs.password.inputRef.value.trim();
         if (user && pass) {
             Meteor.loginWithPassword(user, pass, (error) => {
                 if (error) {
@@ -47,10 +47,11 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
 
     signupuser(event) {
         event.preventDefault();
-        var user = this.refs.username_su.refs.input.value.trim();
-        var pass = this.refs.password_su.refs.input.value.trim();
-        //var name = this.refs.name_su.refs.input.value.trim();
-        var email = this.refs.email_su.refs.input.value.trim();
+	console.log(this.refs);
+        var user = this.refs.username_su.inputRef.value.trim();
+        var pass = this.refs.password_su.inputRef.value.trim();
+        //var name = this.refs.name_su.inputRef.value.trim();
+        var email = this.refs.email_su.inputRef.value.trim();
         if (user && pass && email) {
             if (this.state.repeatpass) {
                 Accounts.createUser({ username: user, email: email, password: pass, profile: { name: name } }, (error) => {
@@ -70,9 +71,9 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
 
     editProfile(event) {
         event.preventDefault();
-        var opass = this.refs.oldpassword_ep.refs.input.value.trim();
-        var npass = this.refs.newpassword_ep.refs.input.value.trim();
-        var name = this.refs.name_ep.refs.input.value.trim();
+        var opass = this.refs.oldpassword_ep.inputRef.value.trim();
+        var npass = this.refs.newpassword_ep.inputRef.value.trim();
+        var name = this.refs.name_ep.inputRef.value.trim();
         if (opass && npass) {
             if (this.state.repeatpass) {
                 Accounts.changePassword(opass, npass, (error) => {
@@ -82,10 +83,10 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
                     }
                     Meteor.users.update(Meteor.userId(), { $set: { profile: { name: name } } });
                     Bert.alert('Changed Profile', 'info', 'fixed-top', 'fa-frown-o');
-                    this.refs.oldpassword_ep.refs.input.value = '';
-                    this.refs.newpassword_ep.refs.input.value = '';
-                    this.refs.renewpassword_ep.refs.input.value = '';
-                    this.refs.name_ep.refs.input.value = '';
+                    this.refs.oldpassword_ep.inputRef.value = '';
+                    this.refs.newpassword_ep.inputRef.value = '';
+                    this.refs.renewpassword_ep.inputRef.value = '';
+                    this.refs.name_ep.inputRef.value = '';
                 });
             }
         }
@@ -93,10 +94,10 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
             if (name) {
                 Meteor.users.update(Meteor.userId(), { $set: { profile: { name: name } } });
                 Bert.alert('Changed Profile', 'info', 'fixed-top', 'fa-frown-o');
-                this.refs.oldpassword_ep.refs.input.value = '';
-                this.refs.newpassword_ep.refs.input.value = '';
-                this.refs.renewpassword_ep.refs.input.value = '';
-                this.refs.name_ep.refs.input.value = '';
+                this.refs.oldpassword_ep.inputRef.value = '';
+                this.refs.newpassword_ep.inputRef.value = '';
+                this.refs.renewpassword_ep.inputRef.value = '';
+                this.refs.name_ep.inputRef.value = '';
             }
     }
 
@@ -130,8 +131,8 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
 
     validateSignup() {
         this.setState({ error: '' })
-        if (this.refs.repassword_su.refs.input.value.trim().length >= this.refs.password_su.refs.input.value.trim().length) {
-            if (this.refs.repassword_su.refs.input.value.trim() == this.refs.password_su.refs.input.value.trim()) {
+        if (this.refs.repassword_su.inputRef.value.trim().length >= this.refs.password_su.inputRef.value.trim().length) {
+            if (this.refs.repassword_su.inputRef.value.trim() == this.refs.password_su.inputRef.value.trim()) {
                 this.setState({ repeatpass: true })
             }
             else {
@@ -145,8 +146,8 @@ export default class AccountsUIWrapper extends TrackerReact(Component) {
 
     validateEditProfile() {
         this.setState({ error: '' })
-        if (this.refs.renewpassword_ep.refs.input.value.trim().length >= this.refs.newpassword_ep.refs.input.value.trim().length) {
-            if (this.refs.renewpassword_ep.refs.input.value.trim() == this.refs.newpassword_ep.refs.input.value.trim()) {
+        if (this.refs.renewpassword_ep.inputRef.value.trim().length >= this.refs.newpassword_ep.inputRef.value.trim().length) {
+            if (this.refs.renewpassword_ep.inputRef.value.trim() == this.refs.newpassword_ep.inputRef.value.trim()) {
                 this.setState({ repeatpass: true })
             }
             else {

@@ -15,9 +15,14 @@ import '/public/dist/alloy-editor/assets/alloy-editor-ocean-min.css';
 
 DocHead.setTitle('BuildTest');
 
-export const MainLayout = ({content}) => (
+export const MainLayout = ({content,admin}) => (
   <div>
-
+    {
+	(admin) ?
+	    <div>
+		  {admin}
+		</div>
+	:
     <div>
       {
         (is.desktop()) ?
@@ -33,6 +38,7 @@ export const MainLayout = ({content}) => (
           :
           <div>this is for phone</div>
       }
-    </div>
+	</div>
+    }
   </div>
 );

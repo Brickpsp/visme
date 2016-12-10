@@ -80,13 +80,13 @@ export default class Grid_content extends TrackerReact(React.Component) {
                         transitionName = "change_list"
                         transitionEnterTimeout = {600}
                         transitionLeaveTimeout = {600}
-                        >
+                    >		    
                         {
                             this.state.detailwork ?
                                 <DetailWork  key="01" id={this.state.id} status={this.state.listStatus} callback={this.go_to_list_work.bind(this) }/>
                                 :
                                 <ListWork  key="02" callback={this.go_to_detail_work.bind(this) }/>
-                        }
+                        }	        
                     </ReactCSSTransitionGroup>
                     //:
                     //null
@@ -124,7 +124,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                             onDrag={ this._preventTextSelect }
                             onResize={ this._preventTextSelect }
                             onResizeStop={ this._preventTextSelect }
-                            rowHeight={Math.floor(($(window).height() - 70) / 6) }
+                            rowHeight={Math.floor(($(window).height() - 70) / 6) }			    
                             >
 
                             <Card shadow={1} key={'0'} data-grid={this.state.layouts.layouts[0] || { x: 0, y: 0, w: 8, h: 6, minW: 4, minH: 2 }} className='window'>
@@ -132,7 +132,7 @@ export default class Grid_content extends TrackerReact(React.Component) {
                                 <CardMenu >
                                     <IconButton onClick={this.fullwindow.bind(this, "List Work") } style={{ color: '#fff' }} name="crop_din" />
                                 </CardMenu>
-                                <CardActions border style={{ padding: '0px', border: '0px', overflow: 'auto' }}>
+                                    <CardActions border style={{ padding: '0px', border: '0px', overflow: 'auto'}}>
                                     {contentlist}
                                 </CardActions>
                             </Card>

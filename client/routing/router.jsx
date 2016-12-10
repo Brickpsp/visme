@@ -3,6 +3,7 @@ import {mount} from 'react-mounter';
 import {MainLayout} from '/client/layouts/mainLayout.jsx';
 import Work from '/client/views/work.jsx';
 import About from '/client/views/about.jsx';
+import Admin from '/client/views/admin.jsx';
 //work = new Mongo.Collection('work');
  
 

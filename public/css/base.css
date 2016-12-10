@@ -85,6 +85,17 @@ background-color: rgba(0, 0, 0, 0.4) !important;
     box-sizing: border-box;
     cursor: se-resize;
 }
+
 .cke_textarea_inline {
     overflow: hidden !important;
 }
+
+/*Fix alloyEditor*/
+.ae-toolbar-add{
+    z-index: 9999;    
+}
+
+.ae-toolbar{
+    z-index: 9999;
+}
+
